@@ -11,15 +11,16 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
-      - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
         with:
+          submodules: 'recursive'
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          extra_system_packages: 'build-base'
           root_file: main.tex
-      - name: Organize output
-        run: |
-          mkdir output
-          ls
-          mv main.pdf output/manuscript.pdf
+          post_compile: 'make'
+      - run: mkdir deploy
+      - run: cp workspace-draft.pdf deploy/${{ github.event.repository.name }}-draft.pdf
       - name: Upload output as artifact
         uses: actions/upload-artifact@main
         with:
