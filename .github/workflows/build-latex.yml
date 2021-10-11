@@ -25,4 +25,3 @@ jobs:
         with:
           name: manuscript
           path: output/manuscript.pdf
-      
