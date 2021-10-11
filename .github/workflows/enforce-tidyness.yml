@@ -1,0 +1,14 @@
+name: Enforce Tidyness
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - run: ./ci/test_tidy.sh
