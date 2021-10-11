@@ -6,4 +6,4 @@ set -e
 ./ci/test_missing_newlines.sh && echo "✔ EOF newlines ok" || exit 1
 ./ci/test_tabs.sh && echo "✔ indentation ok" || exit 1
 ./ci/test_trailing_whitespace.sh && echo "✔ trailing whitespace ok" || exit 1
-./ci/test_cleaner.sh && echo "✔ no compile artifacts" || exit 1
+./ci/test_make_cleaner.sh && echo "✔ no compile artifacts" || exit 1
