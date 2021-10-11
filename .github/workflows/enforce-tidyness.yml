@@ -3,7 +3,7 @@ name: Enforce Tidyness
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-latex:
