@@ -29,9 +29,9 @@ jobs:
       # Convert latex => word document
       - uses: docker://pandoc/latex:2.11
         with:
-          args: -s main.tex -o output/dissertation.docx --bibliography references.bib --bibliography software.bib -C 
+          args: -s main.tex -o output/dissertation.docx --bibliography references.bib --bibliography software.bib -C
       # Upload output as action artifact
       - uses: actions/upload-artifact@main
-        with: 
+        with:
           name: output
           path: output

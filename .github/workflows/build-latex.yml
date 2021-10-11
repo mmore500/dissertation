@@ -1,6 +1,6 @@
 name: Build LaTeX document
 
-on: 
+on:
   push:
     branches:
       - main
@@ -16,13 +16,13 @@ jobs:
         with:
           root_file: main.tex
       - name: Organize output
-        run: | 
+        run: |
           mkdir output
           ls
           mv main.pdf output/manuscript.pdf
       - name: Upload output as artifact
         uses: actions/upload-artifact@main
-        with: 
+        with:
           name: manuscript
           path: output/manuscript.pdf
       
