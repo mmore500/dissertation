@@ -2,8 +2,12 @@ name: Enforce Tidyness
 
 on:
   push:
+    branches: [ master, dev ]
+  pull_request:
     branches:
-      - master
+      - '**'
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
   enforce-tidyness:
