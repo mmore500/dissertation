@@ -220,7 +220,7 @@ By \\ %
 \authorName \\ %
 \end{centering}
 
-\input{abstract}
+\input{tex/abstract.tex}
 
 \end{doublespace}
 \newpage
@@ -242,7 +242,7 @@ Copyright by \\
 \begin{centering}
 \ \vfill
 
-\input{dedication}
+\input{tex/dedication.tex}
 
 \vfill
 \end{centering}
@@ -258,7 +258,7 @@ ACKNOWLEDGEMENTS \par
 
 \begin{doublespace}
 
-\input{acknowledgements}
+\input{tex/acknowledgements.tex}
 
 \end{doublespace}
 \newpage
@@ -316,13 +316,7 @@ ACKNOWLEDGEMENTS \par
 %%% Use format: \include{<file here>(No Extension)}
 
 \begin{raggedbottom}
-\include{chapters/01-introduction/main}
-\include{chapters/02-evolutionary-origins-of-plasticity/main}
-\include{chapters/03-evolutionary-consequences-of-plasticity/main}
-\include{chapters/04-evolving-event-driven-programs-with-signalgp/main}
-\include{chapters/05-tag-based-genetic-regulation/main}
-\include{chapters/06-tag-access-memory/main}
-\include{chapters/07-conclusion/main}
+\input{tex/body.tex}
 \end{raggedbottom}
 
 %%%  Appendices, if necessary:
