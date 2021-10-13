@@ -1,3 +1,5 @@
+\chapter{Introduction}
+
 Broad overview of goals for digital evolution models
 Talk about concept of scalability
 Without isolation -> with dynamic interactions
@@ -11,7 +13,7 @@ Digital evolution has advanced our ability to experimentally investigate evoluti
 In this dissertation I will demonstrate techniques that I designed in order to overcome those limitations, and then use these new abilities to design a digital evolution system capable of allowing organisms to undergo transitions in individuality.
 I will also use this system to investigate specific questions associated with those transitions.
 
-\subsection{Scalability without Isolation is Critical for Future Digital Evolution Models}
+\section{Scalability without Isolation is Critical for Future Digital Evolution Models}
 [
 [Traditional digital evolution systems implement scalability by creating many isolated islands of organisms, that only interact periodically.
 This is not ideal for studying evolutionary dynamics because…]]]
@@ -26,7 +28,7 @@ The versatility and rapid generational turnover of digital systems can easily en
 Although digital evolution techniques can feasibly simulate populations numbering in the millions or billions, very simple agents and/or very limited agent-agent interaction.
 With more complex agents controlled by genetic programs, neural networks, or the like, feasible population sizes dwindle down to thousands or hundreds of agents.
 
-\subsection{Putting Scale in Perspective}
+\section{Putting Scale in Perspective}
 
 Take Avida as an example. This popular software system that enables experiments with evolving self-replicating computer programs.
 In this system, a population of ten thousand can undergo about twenty thousand generations per day.
@@ -42,7 +44,7 @@ Of course, such a comparison neglects the profound disparity between Avidians an
 Recent work with SignalGP has sought to address some of these shortcomings by developing digital evolution substrates suited to more dynamic environmental and agent-agent interactions \cite{lalejini2018evolving} that more effectively incorporate state information \cite{lalejini2021tag,lalejini2020case, moreno2019evaluating}.
 However, to some degree, more sophisticated and interactive evolving agents will necessarily consume more CPU time on a per-replication-cycle basis --- further shrinking the magnitude of experiments tractable with serial processing.
 
-\subsection{The Future is Parallel}
+\section{The Future is Parallel}
 
 Throughout the 20th century, serial processing enjoyed regular advances in computational capacity due to quickening clock cycles, burgeoning RAM caches, and increasingly clever packing together of instructions during execution.
 Since, however, performance of serial processing has bumped up against apparent fundamental limits to computing’s current technological incarnation \cite{sutter2005free}.
@@ -53,7 +55,7 @@ For example, Sentient Technologies notably employed a distributed network of ove
 The availability of orders of magnitude greater parallel computing resources in ten and twenty years’ time seems probable, whether through incremental advances with traditional silicon-based technology or via emerging, unconventional technologies such as bio-computing \cite{benenson2009biocomputers} and molecular electronics \cite{xiang2016molecular}.
 Such emerging technologies could make greatly vaster collections of computing devices feasible, albeit at the potential cost of component-wise speed \cite{bonnet2013amplifying, ellenbogen2000architectures} and perhaps also component-wise reliability.
 
-\subsection{What of Scale?}
+\section{What of Scale?}
 
 Digital evolution practitioners have a rich history of leveraging distributed hardware.
 It is common practice to distribute multiple self-isolated instantiations of evolutionary runs over multiple hardware units.
@@ -79,7 +81,7 @@ However, in systems where evolutionary individuals themselves are parallelized t
 
 We argue that, in a manner explicitly accommodating capabilities and limitations of available hardware, open-ended evolution should prioritize dynamic interactions between simulation elements situated across physically distributed hardware components.
 
-\subsection{Leveraging Distributed Hardware for Open-Ended Evolution}
+\section{Leveraging Distributed Hardware for Open-Ended Evolution}
 
 Unlike most existing applications of distributed computing in digital evolution, open-ended evolution researchers should prioritize dynamic interactions among distributed simulation elements.
 Parallel and distributed computing enables larger populations and metapopulations.
@@ -91,7 +93,7 @@ Even at a scale where individuals remain computationally tractable on a single h
 Developmental processes may also promote canalization \cite{stanley2003taxonomy}, for example through exploratory processes and compensatory adjustments \cite{gerhart2007theory}.
 To reach this goal, David Ackley has envisioned an ambitious design for modular distributed hardware at a theoretically unlimited scale \cite{ackley2011pursue} and demonstrated an algorithmic substrate for emergent agents that can take advantage of it \cite{ackley2018digital}.
 
-\subsection{A Path of Expanding Computational Scale}
+\section{A Path of Expanding Computational Scale}
 
 While by no means certain, the idea that orders-of-magnitude increases in compute power will open up qualitatively different possibilities with respect to open-ended evolution is well founded.
 Spectacular advances achieved with artificial neural networks over the last decade illuminate a possible path toward this outcome. As with digital evolution, artificial neural networks (ANNs) were traditionally understood as a versatile, but auxiliary methodology — both techniques were described as “the second best way to do almost anything” \cite{miaoulis2008intelligent,eiben2015introduction}.
