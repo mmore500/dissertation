@@ -24,6 +24,7 @@ clean:
 sview:
 	xdg-open ${BUILD_DIR}-draft.pdf 2>/dev/null
 
+fresh: cleaner all
 
 cleaner:
 	latexmk -CA
