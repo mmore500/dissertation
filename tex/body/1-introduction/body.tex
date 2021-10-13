@@ -4,7 +4,7 @@ Without isolation -> with dynamic interactions
 Start each section by explaining what the section title means (put folks into context)
 Overview the goals of this dissertation at a conceptual level AND give thesis statement
 Sentence or short paragraph
-Emphasize computational and evolutionary biology contributions (dual degree…)
+Emphasize computational and evolutionary biology contributions (dual degree...)
 Both computational (hardware/software; designing AND implementing a model system) limitations and theoretical (underlying evolutionary dynamics)
 Lots of challenges with advancing our understanding of major evolutionary transitions in individuality.
 Digital evolution has advanced our ability to experimentally investigate evolutionary questions, but for some questions (particularly those that involve huge numbers of cells/agents) we are currently computationally limited.
@@ -39,7 +39,7 @@ So, around six billion cellular replication cycles elapse per day in this system
 
 Although artificial life practitioners traditionally describe instances of their simulations as “worlds,” with serial processing power their scale aligns (in naive terms) more along the lines of a single flask.
 Of course, such a comparison neglects the profound disparity between Avidians and bacteria or yeast in terms of genome information content, information content of cellular state, and both quantity and diversity of interactions with the environment and with other cells.
-Recent work with SignalGP has sought to address some of these shortcomings by developing digital evolution substrates suited to more dynamic environmental and agent-agent interactions \cite{lalejini2018evolving} that more effectively incorporate state information \cite{lalejini2021tag; lalejini2020case, moreno2019evaluating}.
+Recent work with SignalGP has sought to address some of these shortcomings by developing digital evolution substrates suited to more dynamic environmental and agent-agent interactions \cite{lalejini2018evolving} that more effectively incorporate state information \cite{lalejini2021tag,lalejini2020case, moreno2019evaluating}.
 However, to some degree, more sophisticated and interactive evolving agents will necessarily consume more CPU time on a per-replication-cycle basis --- further shrinking the magnitude of experiments tractable with serial processing.
 
 \subsection{The Future is Parallel}
@@ -59,7 +59,7 @@ Digital evolution practitioners have a rich history of leveraging distributed ha
 It is common practice to distribute multiple self-isolated instantiations of evolutionary runs over multiple hardware units.
 In scientific contexts, this practice yields replicate datasets that provide statistical power to answer research questions \cite{dolson2017spatial}.
 In applied contexts, this practice yields many converged populations that can be scavenged for the best solutions overall \cite{hornby2006automated}.
-Another established practice is to use “island models” where individuals are transplanted between populations that are otherwise independently evolving across distributed hardware.
+Another established practice is to use ``island models'' where individuals are transplanted between populations that are otherwise independently evolving across distributed hardware.
 Koza and collaborators’ genetic programming work with a 1,000-cpu Beowulf cluster typifies this approach \cite{bennett1999building}.
 
 In recent years, Sentient Technologies spearheaded digital evolution projects on an unprecedented computational scale, comprising over a million CPUs and capable of a peak performance of 9 petaflops \cite{miikkulainen2019evolving}.
@@ -69,12 +69,12 @@ Unlike the  model where selection events are performed independently on each CPU
 
 Sentient Technologies also accelerated the deep learning training process by using many massively-parallel hardware accelerators (e.g., 100 GPUs) to evaluate the performance of candidate neural network architectures on image classification, language modeling, and image captioning problems \cite{miikkulainen2019evolving}.
 Analogous work parallelizing the evaluation of an evolutionary individual over multiple test cases in the context of genetic programming has used GPU hardware and vectorized CPU operations
-\cite{harding2007fast, langdon2019continuous}.
+\cite{harding2007fast_springer, langdon2019continuous}.
 
 Existing applications of concurrent approaches to digital evolution distribute populations or individuals across hardware to process them with minimal interaction.
 Task independence facilitates this simple, efficient implementation strategy, but precludes application on elements that are not independent.
 Parallelizing evaluation of a single individual often emphasizes data-parallelism over independent test cases, which are subsequently consolidated into a single fitness profile.
-With respect to model parallelism, Harding has notably applied GPU acceleration to cellular automata models of artificial development systems, which involve intensive interaction between spatially-distributed instantiation of a genetic program \cite{harding2007fast}.
+With respect to model parallelism, Harding has notably applied GPU acceleration to cellular automata models of artificial development systems, which involve intensive interaction between spatially-distributed instantiation of a genetic program \cite{harding2007fast_ieee}.
 However, in systems where evolutionary individuals themselves are parallelized they are typically completely isolated from each other.
 
 We argue that, in a manner explicitly accommodating capabilities and limitations of available hardware, open-ended evolution should prioritize dynamic interactions between simulation elements situated across physically distributed hardware components.
