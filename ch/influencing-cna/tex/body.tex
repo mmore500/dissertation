@@ -3,6 +3,31 @@
 
 \section{Event-driven vs. Sensor-driven Genetic Encoding}
 
+SignalGP is a biologically-inspired approach that allows digital organisms to dynamically respond to environmental signals.
+Each event (i.e., a signal from the environment or other agent) is associated with a tag to identify it; modules in the digital organism will be triggered to execute when an event with a matching tag occurs (Figure \ref{fig:signalgp-schematic;ch:influencing-cma}) \citep{lalejini2018evolving}.
+
+We have shown that SignalGP allows evolved programs to engage in a broad range of environmental interactions and can better incorporate context into their behaviors.
+Lalejini et. al. found that tag-based genetic regulation dramatically improved the solution success rate on sensor-intensive and context-dependent problems \citep{lalejini2018evolving, lalejini2021tag}.
+Despite these positive results, this methodology has not yet been directly examined in an artificial life context, especially for its capacity to produce biologically realistic interactions.
+Our goal is to enrich the toolbox of artificial life researchers to conduct evolution experiments while also expanding the applications to genetic programming.
+
+\input{fig/signalgp-schematic.tex}
+
+DISHTINY is a digital framework designed to study open-ended transitions to multicellularity \citep{moreno2019toward}.
+In preliminary studies, we have used SignalGP in DISHTINY to enable dynamic interactions among cells and between cells and their environment, resulting in complex and diverse multi-cellular organisms.
+Existing work with DISHTINY has focused on studying the evolution of multicellular traits, but not on characterizing the genetic programming methodology that underpins it.
+
+Our experimental treatment will supplement procedural sensor instructions with corresponding event cues.
+We will conduct control treatments where we modify signal function on multicellular organisms to isolate the impact of these event-driven cues.  Specifically we will (1) disable signals, (2) randomize signals, (3) temporally offset signals, and (4) spatially offset signals to disentangle their effects and importance.
+We will assess the impact of event-driven cues in terms of:
+\begin{itemize}
+\item amount of environmental information agents incorporate into adaptive behaviors,
+\item overall fitness of evolved behavioral strategies, and
+\item behavior complexity, measured as number genome sites that contribute to fitness.
+\end{itemize}
+
+Establishing how SignalGP affects these metrics is critical to understanding how to effectively employ it, and will ultimately advance experimentally-driven studies of evolution in action.
+
 \section{Alternate Proposals}
 
 \begin{itemize}
