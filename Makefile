@@ -7,12 +7,12 @@ all: ${BUILD_DIR}-draft.pdf
 view:
 	atom ${BUILD_DIR}.pdf
 
-${BUILD_DIR}.pdf: main.tex
+${BUILD_DIR}.pdf: main.tex out.bib
 	latexmk -pdf -silent \
     -jobname=${BUILD_DIR} \
     -pdflatex="pdflatex -interaction=nonstopmode" main.tex
 
-${BUILD_DIR}-draft.pdf: main.tex
+${BUILD_DIR}-draft.pdf: main.tex out.bib
 	latexmk -pdf -silent \
     -jobname=${BUILD_DIR}-draft \
     -pdflatex="pdflatex -interaction=nonstopmode" draft.tex
@@ -20,6 +20,11 @@ ${BUILD_DIR}-draft.pdf: main.tex
 clean:
 	rm -f ${BUILD_DIR}.pdf
 	rm -f ${BUILD_DIR}-draft.pdf
+	rm -f out.bib
+
+out.bib:
+	# adapted from https://kevcaz.github.io/notes/latex/bibtools/
+	bibtool -s -d ch/*/bibl.bib -o out.bib
 
 sview:
 	xdg-open ${BUILD_DIR}-draft.pdf 2>/dev/null
