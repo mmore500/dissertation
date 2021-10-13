@@ -30,3 +30,10 @@ jobs:
         with:
           name: manuscript
           path: deploy/${{ github.event.repository.name }}-draft.pdf
+      # test ch/ make recipe
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          extra_system_packages: 'build-base'
+          root_file: main.tex
+          post_compile: 'make -C ch/'

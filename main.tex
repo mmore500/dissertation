@@ -3,43 +3,7 @@
 
 
 %%%  Include packages used throughout the dissertation:
-\usepackage{adjustbox}
-\usepackage{afterpage}
-% \usepackage{algpseudocode}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{calc}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{comment}
-\usepackage{csquotes}
-\usepackage{epsfig}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{graphics}
-\usepackage[hmarginratio=1:1,margin=1in]{geometry}
-\usepackage{indentfirst}
-\usepackage{layout}
-\usepackage{listings}
-\usepackage{multirow}
-\usepackage{moreverb}
-\usepackage{natbib}
-\usepackage{pdflscape}
-\usepackage{rotating}
-\usepackage{setspace}
-\usepackage{subcaption}
-\usepackage{tabulary}
-\usepackage{tabularx}
-\usepackage{tabu}
-% \usepackage[euler]{textgreek}
-\usepackage[flushleft]{threeparttable}
-\usepackage{tocloft}
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage[table]{xcolor}
-% \usepackage [latin1]{inputenc}
-\usepackage{import}
+\input{tex/packages.tex}
 
 %%% Colors for tracking changes. %%%
 %%% Use: \cut{<Text you want to cut.>} -> Makes the text red.
@@ -151,7 +115,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%  Include any definitions you wish to use throughout the dissertation:
-\input{definitions}
+\input{tex/definitions.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -332,12 +296,12 @@ BIBLIOGRAPHY
 \begin{singlespace}
 \bibliographystyle{apalike}% your bst file here
 \bibliography{
-  ch/case-studies/bibl.bib,
-  ch/conclusion/bibl.bib,
-  ch/influencing-cna/bibl.bib,
-  ch/infrastructure/bibl.bib,
-  ch/introduction/bibl.bib,
-  ch/measuring-cna/bibl.bib
+  ch/body/case-studies/bibl.bib,
+  ch/body/conclusion/bibl.bib,
+  ch/body/influencing-cna/bibl.bib,
+  ch/body/infrastructure/bibl.bib,
+  ch/body/introduction/bibl.bib,
+  ch/body/measuring-cna/bibl.bib
 } %your bib file here
 \end{singlespace}
 \end{doublespace}
