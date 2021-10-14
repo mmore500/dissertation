@@ -24,13 +24,12 @@ clean:
 
 out.bib:
 	# adapted from https://kevcaz.github.io/notes/latex/bibtools/
-	bibtool -s -d ch/*/bibl.bib -o out.bib
+	bibtool -s -d $$(find . -name "bibl.bib" -type f) -o out.bib
 
 sview:
 	xdg-open ${BUILD_DIR}-draft.pdf 2>/dev/null
 
 fresh: cleaner all
-	$(MAKE) clean -C ch/
 
 cleaner: clean
 	latexmk -CA
