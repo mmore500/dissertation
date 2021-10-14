@@ -4,3 +4,7 @@
 [submodule "ch/influencing-cna/submodules/oee4"]
 	path = ch/measuring-cna/submodules/oee4
 	url = https://github.com/mmore500/oee4.git
+[submodule "ch/infrastructure/submodules/signalgp-lite"]
+	path = ch/infrastructure/submodules/signalgp-lite
+	url = https://github.com/mmore500/signalgp-lite.git
+	branch = joss
