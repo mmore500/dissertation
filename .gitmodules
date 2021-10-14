@@ -1,0 +1,3 @@
+[submodule "ch/infrastructure/submodules/conduit-quality-of-service-writeup"]
+	path = ch/infrastructure/submodules/conduit-quality-of-service-writeup
+	url = https://github.com/mmore500/conduit-quality-of-service-writeup.git

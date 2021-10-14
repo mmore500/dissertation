@@ -1,10 +1,10 @@
 #!/bin/bash
 
-SOURCE_HASH=$( find -path ./submodule -prune -false -o -type f | sort | xargs cat | sha1sum )
+SOURCE_HASH=$( find -path '*/submodules/*' -prune -false -o -type f | sort | xargs cat | sha1sum )
 
 bash ./ci/fix_missing_newlines.sh
 
-if [ "${SOURCE_HASH}" == "$( find -path ./submodule -prune -false -o -type f | sort | xargs cat | sha1sum )" ];
+if [ "${SOURCE_HASH}" == "$( find -path '*/submodules/*' -prune -false -o -type f | sort | xargs cat | sha1sum )" ];
 then
   exit 0 # success
 else

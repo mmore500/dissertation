@@ -1,37 +1,58 @@
 \usepackage{adjustbox}
 \usepackage{afterpage}
+\usepackage{algorithmic}
 % \usepackage{algpseudocode}
 \usepackage{amssymb}
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{calc}
+\usepackage{caption}
+\usepackage{cite}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{comment}
 \usepackage{csquotes}
+\usepackage{csvsimple}
 \usepackage{epsfig}
+\usepackage{etoolbox}
 \usepackage{fancyhdr}
+\usepackage[hmarginratio=1:1,margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{graphics}
-\usepackage[hmarginratio=1:1,margin=1in]{geometry}
+\usepackage{import}
 \usepackage{indentfirst}
 \usepackage{layout}
 \usepackage{listings}
+\usepackage{longtable}
+\usepackage{lscape}
 \usepackage{multirow}
 \usepackage{moreverb}
 \usepackage{natbib}
 \usepackage{pdflscape}
 \usepackage{rotating}
 \usepackage{setspace}
+\usepackage{siunitx}
 \usepackage{subcaption}
 \usepackage{tabulary}
 \usepackage{tabularx}
 \usepackage{tabu}
+\usepackage{textcomp}
 % \usepackage[euler]{textgreek}
 \usepackage[flushleft]{threeparttable}
 \usepackage{tocloft}
 \usepackage{url}
 \usepackage{hyperref}
-\usepackage[table]{xcolor}
+\usepackage{xcolor,colortbl}
 % \usepackage [latin1]{inputenc}
-\usepackage{import}
+
+
+% pragma once, adapted from https://tex.stackexchange.com/a/195173
+\makeatletter
+\let\pragma@iinput=\@iinput
+\def\@iinput#1{\xdef\@pragmafile{#1}\pragma@iinput{#1}}
+\def\@pragmafile{default}
+\def\pragmaonce{%
+   \csname pragma@\@pragmafile\endcsname
+   \global\expandafter\let \csname pragma@\@pragmafile\endcsname = \endinput
+}
+\makeatother
