@@ -1,0 +1,56 @@
+\section{Diagnostic Problem Benchmarking}
+
+In order to viably serve as a specialized alternative to the original SignalGP for certain artificial life applications, SignalGP-Lite must match SignalGP's performance on benchmarks measuring responsivity and plasticity (the ability of programs to adapt to changes in their environment).
+To verify SignalGP-Lite's aptitude on these tests, we replicated two canonical SignalGP experiments, reported below \citep{lalejini2018evolving,lalejini_tag-based_2021}.
+
+\subsection{Changing Environment Problem}
+
+\input{fig/tts-changing.tex}
+
+The Changing Environment Problem dispatched $K =$ 2, 4, 8, or 16 mutually-exclusive environmental signals with randomly generated labels.
+Programs were tasked to respond to each signal with a unique response instruction \citep{lalejini2018evolving}.
+
+A total of 100 replicate populations of 100 individuals were evolved for up to 10,000 generations.
+Elite selection was used to choose the best-fit individual; roulette selection was used for the other 99.
+Figure \ref{fig:tts-changing} shows the number of generations elapsed before a full solution was found.
+SignalGP-Lite evolved full solutions to each problem within 3,500 generations in all 100 tested replicates.
+
+In the $K=16$ case, we achieved a superior 100\% signal reproduction rate compared to an average of 32\% on the original SignalGP  implementation  (\citep{lalejini2018evolving} Figure 2).
+We suspect this improvement occurred due to differences in how mutation, tag matching, and program initialization were performed, rather than an intrinsic difference between the libraries.
+
+\subsection{Contextual Signal Problem}
+
+\input{fig/tts-context.tex}
+
+The Contextual Signal Problem assesses the ability of evolving programs to maintain memory of previously encountered signals.
+In previous work, this problem was used to demonstrate an important use case of regulation instructions.
+To solve this problem, programs must remember an initial signal (i.e., its ``context'') in order to respond appropriately to a second signal \citep{lalejini_tag-based_2021}.
+
+We assigned each possible unordered input signal pair a unique response to then be performed by the organism.
+We tested with 16 input signal pairs and 4 output responses.
+Table 2 in \citep{lalejini_tag-based_2021} enumerates these sequences and responses.
+
+A total of 20 replicates were evolved for up to 10,000 generations using a 16-way lexicase selection scheme \citep{spector2012assessment}, with each of the input signal pairs serving as a test case.
+To evaluate each test case, programs were sent the first signal of each test case and given 128 virtual CPU cycles to process it.
+After this, the second signal was sent.
+After another 128 virtual CPU cycles, their response was recorded.
+
+In order to save resources and computing time, as soon as a replicate evolved a fully-correct solution, their evolution was halted.
+We excluded random number generating operations from the instruction set to ensure that programs could not solve the Contextual Signal Problem by chance.
+Figure \ref{fig:tts-context} shows the number of generations elapsed before a full solution was found.
+SignalGP-Lite evolved full solutions in half as many generations compared to SignalGP when regulation was enabled.
+Moreover---as opposed to SignalGP---no replicates failed to reach a full solution in 10,000 generations.
+This may be due to the original SignalGP experiment purging running modules between signals, while our replication did not.
+
+The primary object of interest this benchmark, however, is the extent to which each library's problem solving capability improves with regulation instructions enabled.
+As expected, with regulation disabled the performance of both libraries is significantly degraded.
+SignalGP-Lite's median (or mean, depending on what's reported in the other paper) time to solution discovery with regulation disabled was XX generations.
+SignalGP's was YY generations.
+Indeed, without regulation, both libraries achieved similarly slow generations to solution discovery.
+\footnote{
+We were surprised to see SignalGP-Lite evolve full solutions in the absence of regulation.
+SignalGP reached solutions sans regulation through global memory operations that allow coordination between modules.
+Although SignalGP-Lite's baseline instruction set does include global memory, manual inspection revealed that solutions appear to have arisen through intricately timed busy loops.
+}
+
+These results confirm that SignalGP-Lite's module regulation system functions comparably to SignalGP's in terms of facilitating context-dependent behavior.

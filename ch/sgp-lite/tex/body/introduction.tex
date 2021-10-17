@@ -1,0 +1,36 @@
+\section{Introduction}
+
+Genetic programming applies the principles of evolution to automatically synthesize computer programs rather than writing them by hand \citep{banzhaf1998genetic}.
+Often genetic programming is used to synthesize imperative programs where a single chain of execution directly manages every aspect of the program.
+SignalGP is an existing genetic programming framework for evolving event-driven computer programs where programs trigger event handlers (i.e., program modules) in response to signals that are generated internally, externally from other agents, or externally from the environment \citep{lalejini2018evolving}.
+Such event-driven representations outperform traditional imperative genetic programming on interaction intensive problems where the evolved programs must handle inputs from the environment or from other agents, as is the case in distributed computing problem domains and many artificial life simulations.
+
+SignalGP-Lite is a C++ library for event-driven genetic programming.
+In comparison to existing implementations of SignalGP, which are intended for general event-driven genetic programming, SignalGP-Lite is tailored for use in artificial life experiments.
+Here, we benchmark the virtual machine model and underlying computational implementation SignalGP-Lite relative to SignalGP.
+In ``Execution Speed Benchmarking,'' we report compute times for both SignalGP and SignalGP-Lite using synthetic benchmarks---benchmarks that designed with reproducibility and accuracy in mind, but that might not reflect real-world problems.
+In ``Test Problem Benchmarking,'' we compare solution quality of SignalGP and SignalGP-Lite on simple genetic programming problems designed to test responsivity and plasticity.
+
+\section{Statement of Need}
+
+Mathematical and computational constructs modeling hypotheseses of biological reality advance life science by translating assumptions underlying those hypotheses into falsifiable predictions \citep{gunawardena2014models}.
+Such models traditionally represent mechanisms of biology in a direct, often physical, sense --- explicitly modeling, for example, biochemical oscillations or population counts within a species \citep{mogilner2006quantitative,schuster2011mathematical}.
+In contrast, artificial life systems ply unfamiliar substrates such as self-replicating computer programs or set-theoretic artificial chemistries that lack a direct analog in the natural world \citep{ofria2004avida,dittrich2001artificial}.
+Although artificial life substrates are not directly descriptive of physical reality per se, research interest stems instead from their capacities to instantiate fundamental abstract processes core to biological life, such as evolution, and their capacity to exhibit fundamental abstract properties of biological life, such as plasticity.
+(Whether artificial life systems are best conceived of as models or as alternate instances of ``life as it could be'' haunts perennial philosophical interest \citep{shanken1998life,pennock2007models}.)
+
+Despite being able to simulate evolution with much faster generational turnover than is possible in biological experiments \citep{ofria2004avida}, the scale of digital artificial life populations is profoundly limited by available computational resources \citep{Moreno_2020}.
+Large population sizes are essential to studying fundamental evolutionary phenomena such as ecologies, the transition to multicellularity, and rare events.
+In conjunction with parallel and distributed computing, computational efficiency is crucial to achieving larger-scale artificial life simulations.
+
+In comparison to SignalGP --- which was designed to target generic genetic programming problems --- SignalGP-Lite fills a niche for interaction-heavy genetic programming applications that can tolerate less runtime configuration flexibility and pared-back control flow.
+SignalGP-Lite is designed with artificial life experiments in mind, where simulation parameters need not change during execution and a more rudimentary approach to control flow can often be tolerated.
+
+In addition, SignalGP-Lite specially emphasizes accessibility for re-use and extension by the broader research community.
+To ensure reliability and usability, and we provide documentation via ReadTheDocs, test source code via continuous integration, benchmark performance critical components, and cater to custom extensions of the instruction set and virtual hardware.
+
+The library has enabled order-of-magnitude scale-up of existing artificial life experiments studying the evolution of multicellularity (e.g., \citep{moreno2021exploring,moreno2021case}); we anticipate it will also enable novel work in other artificial life and genetic programming contexts.
+
+\section{Projects Using the Software}
+
+SignalGP-Lite is used in DISHTINY, a digital framework for studying evolution of multicelularity \citep{moreno2019toward,moreno2021exploring,moreno2021case}.

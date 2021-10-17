@@ -1,0 +1,60 @@
+\section{Execution Speed Benchmarking}
+
+\input{fig/bench-wall.tex}
+
+We performed a set of microbenchmarks --- a type of synthetic benchmark that measures execution time of software subcomponents --- to quantify the effectiveness of SignalGP-Lite's optimizations in accelerating evaluation of event-driven genetic programs.
+
+Hardware caching size profoundly affects memory access time, which is key to computational performance \citep{skadron1999branch}.
+In order to determine the relative performance of SignalGP and SignalGP-Lite at different cache levels, we benchmarked over different orders of magnitude of memory load by varying the number of virtual CPUs (agent counts) between from 1 and 32768.
+
+We performed five microbenchmark experiments, reported below, to isolate how specific aspects of the library design influenced performance.
+Analysis below focuses on wall time speedup.
+However, supplementary Figure \ref{fig:raw-timings} shows raw wall-clock timings for these experiments.
+For each microbenchmark experiment, the Google Benchmark library used an instrumented burn-in process to dynamically determine the number of successive calls to the focal code snippet necessary to take a stable measurement of its run time.
+
+\subsection{control}
+
+The control involves importing the library to benchmark, initializing agents, and then measuring the execution time of an empty loop. This experiment verifies the validity of our benchmarking process.
+The 1x wall speedup (Figure \ref{fig:bench-wall}) confirms that further results are not inadvertently skewed by our experimental apparatus.
+
+\subsection{nop}
+
+A program consisting of 100 \texttt{nop} instructions is randomly generated.
+(Although some \texttt{nop} operation variants advance the random number generator engine in order to minimize unintended side effects when substituted for another operation that itself advances the random number generator, no \texttt{nop} instructions used in this experiment did so.)
+This benchmarks instruction execution overhead directly, as it successive \texttt{nop}'ss are the only call measured inside the benchmarking loop.
+With this approach, the relative performance impact of SignalGP-Lite's byte-code interpreter can be compared to SignalGP's lambda-based instructions.
+
+We observe an $8\times$ to $30\times$ speedup under SignalGP-Lite (Figure \ref{fig:bench-wall}).
+The greatest speedup occurred at a relatively light memory footprint of 1024 agents.
+
+\subsection{arithmetic}
+
+A program consisting of 100 randomly-chosen arithmetic instructions (\texttt{add}, \texttt{subtract}, \texttt{multiply}, and \texttt{divide}) is generated.
+This measures the performance impact of SignalGP-Lite's fixed-length array registers compared to SignalGP's variable-length vector registers.
+This compile-time optimization streamlines register access at the cost of the ability to change the number of registers on the fly.
+Since our aim is to only measure the performance effect of this optimization, no \texttt{nop} instructions are present in the generated program.
+
+Figure \ref{fig:bench-wall} shows that incorporating this trade-off increases speedup to 20x to 50x.
+The greatest speedup increase occurred at a relatively light memory footprint of 1024 agents.
+
+\subsection{complete}
+
+The complete benchmark adds control flow instructions to the prior benchmarks' instruction set.
+Bitwise and logical operators, comparison instructions, and random number generation operations, are also included.
+From this complete instruction set, a 100-instruction program is randomly generated.
+
+The main goal of this benchmark is to determine the performance impact of omitting a function stack and implementing inner loops and conditionals in terms of `jump` instructions instead of nested code blocks.
+
+SignalGP-Lite's stripped-down control flow model increases speedup to $30\times$ to $55\times$ compared to vanilla SignalGP (Figure \ref{fig:bench-wall}).
+The greatest speedup occurred at a light memory footprint of 32 agents.
+
+\subsection{sans\_regulation}
+
+Regulation operations allow SignalGP and SignalGP-Lite programs to adjust which program modules are expressed in response to environmental signals.
+Since regulation can invalidate some of SignalGP and SignalGP-Lite's caching optimizations, we wanted to measure timings without regulation enabled.
+
+This benchmark measures the complete instruction set with regulation-related instructions excluded.
+
+As shown on \autoref{fig:bench-wall}, this yields a $35\times$ to $47\times$ speed-up with respect to SignalGP.
+The greatest speedup occurred at a light memory footprint of 32 agents.
+From this, we can conclude that SignalGP-Lite offers performance improvements even on simulations that do not depend on regulation.
