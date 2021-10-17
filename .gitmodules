@@ -15,3 +15,7 @@
   path = ch/tag-matching/submodules/tag-olympics-writeup
   url = https://github.com/mmore500/tag-olympics-writeup.git
   shallow = true
+[submodule "ch/case-studies/submodules/frontiers-2021"]
+  path = ch/case-studies/submodules/frontiers-2021
+  url = https://github.com/mmore500/frontiers-2021.git
+  shallow = true
