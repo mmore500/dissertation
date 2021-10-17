@@ -1,0 +1,50 @@
+\documentclass[12pt,letterpaper,twoside]{report}
+
+\input{../../tex/macros.tex}
+\input{../../tex/packages.tex}
+
+\begin{document}
+
+\setlength{\parindent}{2 em}
+\begin{doublespace}
+
+%% Change this for spacing:
+%\onehalfspacing
+\linespread{1.2}
+
+
+\begin{raggedbottom}
+\input{tex/body.tex}
+\end{raggedbottom}
+
+%%%  Appendices, if necessary:
+
+\begin{centering}
+\vfill
+\appendix{APPENDICES}                      %Make sure the names in
+\addcontentsline{toc}{chapter}{APPENDICES} %brackets match
+\vfill
+\end{centering}
+\newpage
+\input{tex/appendix.tex} %====Put you Appendix text here
+\clearpage
+
+
+%\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+%%%  Bibliography:
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+
+\newpage
+\vspace*{\fill}
+\begin{center}
+BIBLIOGRAPHY
+\vspace*{\fill}
+\end{center}
+
+\newpage
+\begin{singlespace}
+\bibliographystyle{apalike}% your bst file here
+\bibliography{out.bib} %your bib file here
+\end{singlespace}
+\end{doublespace}
+\end{document}
