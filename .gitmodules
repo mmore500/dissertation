@@ -11,3 +11,7 @@
   url = https://github.com/mmore500/signalgp-lite.git
   branch = joss
   shallow = true
+[submodule "ch/tag-matching/submodules/tag-olympics-writeup"]
+  path = ch/tag-matching/submodules/tag-olympics-writeup
+  url = https://github.com/mmore500/tag-olympics-writeup.git
+  shallow = true
