@@ -19,3 +19,8 @@
   path = ch/case-studies/submodules/frontiers-2021
   url = https://github.com/mmore500/frontiers-2021.git
   shallow = true
+[submodule "ch/influencing-cna/submodules/dishtiny"]
+  path = ch/influencing-cna/submodules/dishtiny
+  url = https://github.com/mmore500/dishtiny.git
+  branch = binder
+  shallow = true
