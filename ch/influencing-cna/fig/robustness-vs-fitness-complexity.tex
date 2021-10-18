@@ -1,0 +1,30 @@
+\begin{figure}
+\begin{center}
+
+\begin{subfigure}[b]{\textwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{submodules/dishtiny/binder/bucket=prq49/a=all_stints_all_series_profiles+endeavor=16/teeplots/bucket=prq49+endeavor=16+transform=groupby-Series-mean+viz=regplot+x=fitness-complexity+y=fraction-mutations-that-are-deleterious+ext=}%
+\caption{
+Robustness measured as fraction mutations that are deleterious
+}
+\label{fig:robustness-vs-fitness-complexity-fraction-mutations-that-are-deleterious}
+\end{subfigure}
+
+\begin{subfigure}[b]{\columnwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{submodules/dishtiny/binder/bucket=prq49/a=all_stints_all_series_profiles+endeavor=16/teeplots/bucket=prq49+endeavor=16+transform=groupby-Series-mean+viz=regplot+x=fitness-complexity+y=mean-mutating-mutant-fitness-differential+ext=}
+\caption{
+Robustness measured as mean fitness differential between mutation-enabled and mutation-disabled strains.
+}
+\label{fig:robustness-vs-fitness-complexity-mean-mutating-mutant-fitness-differential}
+\end{subfigure}
+
+\caption{
+Robustness and fitness complexity for strains sampled from 40 replicates across 100 three hour evolutionary stints at 10 stint intervals.
+Individual observations are fully independent, computed as means over stints per replicate trial.
+Shaded regions are 95\% confidence intervals.
+}
+\label{fig:robustness-vs-fitness-complexity}
+
+\end{center}
+\end{figure}
