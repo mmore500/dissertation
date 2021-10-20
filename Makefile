@@ -11,11 +11,18 @@ ${BUILD_DIR}.pdf: main.tex out.bib
 	latexmk -pdf -silent \
     -jobname=${BUILD_DIR} \
     -pdflatex="pdflatex -interaction=nonstopmode" main.tex
+	# must rotate output pdf 90 degrees (why? don't know)
+	# adapted from https://serverfault.com/a/852413
+	pdftk ${BUILD_DIR}.pdf cat 1-endright output - | sponge ${BUILD_DIR}.pdf
 
 ${BUILD_DIR}-draft.pdf: main.tex out.bib
 	latexmk -pdf -silent \
     -jobname=${BUILD_DIR}-draft \
     -pdflatex="pdflatex -interaction=nonstopmode" draft.tex
+	# must rotate output pdf 90 degrees (why? don't know)
+	# adapted from https://serverfault.com/a/852413
+	pdftk ${BUILD_DIR}-draft.pdf cat 1-endright output - | sponge ${BUILD_DIR}-draft.pdf
+
 
 clean:
 	rm -f ${BUILD_DIR}.pdf
