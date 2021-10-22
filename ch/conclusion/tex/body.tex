@@ -5,63 +5,85 @@
 Authors: Matthew Andres Moreno and Charles Ofria \\
 Portions of this chapter are adapted from ~\citep{moreno2020practical}
 
-The extent of complexity, novelty, and adaptation in the natural world inspires perennial scientific curiosity to understand aspects of its causes and engineering ambition to replicate aspects its properties.
-In this dissertation, I have leveraged parallel and distributed high performance computing to perform digital evolution experiments to study complexity, novelty, and adaptation among emergent multicells.
+The complexity, novelty, and diversity found in the natural world continually inspires scientific curiosity to understand their origins, just as the ingenuity of natural adapations spur engineers to try to replicate their design.
+In this dissertation, I have pushed forward parallel and distributed high-performance computing techniques, and leveraged them to perform digital evolution experiments to study complexity, novelty, diversity, and adaptation in evolved multicells.
 
 \section{Contribution}
 
-In Part \ref{part:infrastructure} of this dissertation, I present novel methodology to enable evolution of digital multicells within an environment dominated by biotic selection.
+In Part \ref{part:infrastructure} of this dissertation, I presented effcient techniques to execute highly-responsive digital organisms, as well as a novel methodology to enable evolution of digital multicells within an environment dominated by biotic selection.
 This methodology focuses particularly on computational scalability, yielding software for and analyses of best-effort communication that can generalize to other artificial life projects and beyond.
 
 Chapter \ref{ch:tag-matching} characterizes variational, geometric, and evolutionary properties of several tag-matching schemes for event-driven genetic programming \citep{lalejini2018evolving}.
-I found that provides a nonlinear ``streak''-based metric \citep{downing2015intelligence} provided intermediate geometric and variational properties that, in some situations, provided an evolutionary advantage.
+I identified intermediate geometric and variational properties associated with the nonlinear ``streak''-based metric \citep{downing2015intelligence} and showed how they translated into an evolutionary advantage in certain situations.
+I also implemented all of these metrics as interchangeable components within the Empirical C++ library's MatchBin toolset.
 
-Chapter \ref{ch:signalgp-lite} provides a computationally efficient implementation of event-driven genetic programming for artificial life contexts.
-Use of a bytecode interpreter and data structures with better spatial locality enabled a ten times speedup in some situations.
+Chapter \ref{ch:signalgp-lite} provides a computationally efficient implementation of event-driven genetic programming for artificial life contexts called SignalGP-lite.
+I used a bytecode interpreter and data structures with better spatial locality to achieve up to a ten times speedup in some situations.
 
-Chapter \ref{ch:conduit} implements and tests best-effort communication approaches on commercially available high performance computing hardware.
-We find that median performance of several quality-of-service metrics remains stable scaling up to 256 processes.
-In separate experiments, we demonstrate how the best effort approach can provide better quality solutions to a graph coloring problem within a fixed time limit.
+In Chapter \ref{ch:conduit}, I implemented and tested a best-effort communication framework (Conduit) on commercially available high-performance computing hardware.
+I found that Conduit's median performance on several quality-of-service metrics remains stable scaling up to 256 processes.
+In separate experiments, I demonstrated how the best-effort approach can provide better quality solutions to a graph coloring problem within a fixed time limit.
+At 64 processes, best-effort communication yielded a 2$\times$ faster update rate on a compute-intensive problem and a 7$\times$ faster update rate on a communication-intensive problem.
 
-Chapter \ref{ch:distributed-phylogeny} proposes an approach to record phylogenetic information in decentralized artificial life experiments.
+Chapter \ref{ch:distributed-phylogeny} proposed an approach for accurate and straightforward phylogenetic analyses in decentralized artificial life experiments.
 
-Part \ref{part:experiments} reports digital evolution experiments performed to study complexity, novelty, and adaptation within digital multicells.
+Part \ref{part:experiments} of this dissertation proposal reported on digital evolution experiments performed to study complexity, novelty, and adaptation within digital multicells.
 
-Chapter \ref{ch:case-studies} describes four qualitative evolved multicellular life histories that evolved and reports phenomena characteristic of multicellularity including reproductive division of labor, resource sharing within kin groups, resource investment in offspring groups, asymmetrical behaviors mediated by messaging, morphological patterning, and adaptive apoptosis.
+Chapter \ref{ch:case-studies} introduced DISHTINY, a new digital evolution framework using the tools that I developed to simulate fraternal evolutionary transitions in individuality.
+I also described four qualitative evolved multicellular life histories and reported phenomena characteristic of multicellularity, including reproductive division of labor, resource sharing within kin groups, resource investment in offspring groups, asymmetrical behaviors mediated by messaging, morphological patterning, and adaptive apoptosis.
 
-Chapter \ref{ch:measuring-cna} tracks the co-evolution of novelty, complexity, and adaptation in a case study lineage.
-This case study lineage contained ten qualitatively distinct multicellular morphologies, several of which exhibit asymmetrical growth and distinct life stages.
-Contextualize the evolutionary history of these morphologies with measurements of complexity and adaptation suggests a loose, sometimes divergent, relationship can exist among novelty, complexity, and adaptation.
+In Chapter \ref{ch:measuring-cna}, I tracked the evolution of novelty, complexity, and adaptation along a case study lineage.
+This lineage contained ten qualitatively distinct multicellular morphologies, several of which exhibit asymmetrical growth or distinct life stages.
+I further characterized the evolutionary history of these morphologies with measurements of complexity and adaptation, suggesting a loose, sometimes divergent, relationship can exist among novelty, complexity, and adaptation.
 
-Chapter \ref{ch:influencing-cna} proposes work to test the influence of event-driven genetic programming representation on the evolution of multicellular complexity and adaptation.
+Finally, in Chapter \ref{ch:influencing-cna} I propose work to test the influence of event-driven genetic programming representation on the evolution of multicellular complexity and adaptation.
 
+At heart, this dissertation proposal conveys an approach to simultaneously relax programmed-in, algorithmic constraint on digital evolution models of fraternal major evolutionary transtions in individuality while also overcoming practical scaling barriers to large-scale experiments.
+evolution.
+Initial results exhibit pervasive evolutionary contingency.
+That a small sampling of experiments yielded wide variety of behaviors and individual life histories lends credence to the notion that natural history's breadth is not surprising so much as it is inevitable.
+Further research teaseing apart the constructive potential inherent in major evolutionary transitions promises better capability to shape them and garner computing systems that relect the capability and robustness of natural organisms.
 
 \section{Future Work}
 
 Important work remains across the breadth of the methodological stack employed in this dissertation.
+A brief cross section of such research follows.
 
-Further research should develop more efficient tag matching procedures for large sets of operands.
+At a technical level, further research should develop more efficient tag matching procedures for large sets of operands.
 Current techniques are $O(n)$ with respect to the number of operands because queries must calculate match distance to every operand.
 A compartmentalized approach may enable better performance by restricting potential matches to a subset of operands.
 If designed properly, compartmentalized tag matching could also promote modularity by restricting which query-operand matches are possible under tag mutations.
 Organizing tag-matching compartments chronologically and biasing against queries or operands mutating into older compartments might facilitate complexification by protecting ancient tag-matching circuits.
 
 Decentralized methods for diversity maintenance also remain an open question.
-Although diversity maintenance can readily be performed on a per-process basis using a finite resource model, a question remains how to generalize this approach to a distributed context.
+Although diversity maintenance can readily be performed on a per-process basis using a finite resource model, how to generalize this approach to a distributed context remains unclear.
 (In future work, the current per-process approach may not be sufficient if smaller per-process cell counts or larger group size reduces the number of multicells occupying a single process too far.)
 
 Sexual recombination plays a central role in natural history \citep{smith1997major} and genetic programming \citep{o2009riccardo}.
 However, work has yet to be performed on sexual recombination with event-driven genetic programming encodings.
 Segregation of linear genetic code into distinct, tagged modules suggests promising possibilities for semantic crossover.
 This could enable digital evolution experiments probing the intersection between fraternal transitions in individuality and the evolution of sex.
+Furthermore, digital evolution work overwhelmingly assumes a haploid genome because how one should merge execution of two separate programs is unclear.
+Tagged modules, however, could support co-expression among multiple alleles of the same gene, potentially opening up more effective recombination techniques and more relevant studies related to the evolution of sex.
 
-Direct efforts to evolve emergent multicellular functionality should also be pursued.
-Multicellular motility could be selected for by increasing resource collection rate based with distance the site where a group originated.
+Direct efforts to evolve emergent multicellular functionality should also take place.
+Multicellular motility could be selected for by increasing resource collection rate based on the distance from the site where a group originated.
 ``Trading`` between groups or specialization between groups could be selected for by introducing discrete tokens with resource value that differs among cells or among groups (perhaps determined via a hash of cell or group ID and token ID).
 
-Such efforts could extend evolving multicells to solve simple pattern detection or game playing tasks.
-This would require careful thinking about how to ``wire'' input/output controls into multicell collectives and how to make problem instances available on demand to multicells in a distributed setting.
+Such efforts could extend to selecting for multicells that solve simple pattern detection tasks.
+This goal would require careful consideration about how to ``wire'' input/output controls into multicell collectives and how to make problem instances available on demand to multicells in a distributed setting, but could have powerful applications.
 The ability to show multicells outperforming individual unicells or even collections of unicells on such problems would be an exciting result.
-Past work exploring the introduction of neuron-like cell-cell interconnects into the DISHTINY model could serve as a stepping stone toward these objectives \citep{moreno2020practical}
+Past work exploring the introduction of neuron-like cell-cell interconnects into the DISHTINY model could serve as a stepping stone toward these objectives \citep{moreno2020practical}.
 
-We are excited to see how open-ended model systems built on commercially-available distributed computational substrates will address questions about how biological complexity relates to fitness, genetic drift over elapsed evolutionary time, mutational load, genetic recombination (sex and horizontal gene transfer), ecology, historical contingency, and key innovations.
+Artificial life furnishes an unusually unconstrained testbed for approaches to distributed computing that radically depart from established practice.
+Best-effort approaches explored first in this context could prove useful in broader realms of high-performance computing application, particularly machine learning.
+It is also possible that algorithms evolved in the context of complex, spatial multicellularity could directly translate to distributed computing applications.
+
+% @CAO: So many other directions are possible; historical contingency is one that I, of course, am excited about.  The one that I think should be talked more about though is applying results back to computer science.  Something like (and this was stream-of-consciousness):
+% @MAM incorporated/reworked a bit above
+% Ultimately, as we evolve more complex multicellular digital organisms, the algorithms they use will often mimic the ones needed for the high-performance computing clusters that we are running them on.
+% The evolved organisms, however, will not be biased by preconceived ideas for how distributed algorithms should be created, nor constrained by a human's ability to predict the emergent ramifications of algorithmic decisions.
+% Indeed, the products of evolution will hopefully help us develop new ideas and new techniques for building the software that is running them, creating a virtuous cycle of more powerful digital evolution software producing more sophisticated evolved organisms that help us produce yet more powerful software.
+% The two way flow of ideas between evolutionary theory and applied evolution will push ever forward.
+
+We are excited to see how open-ended model systems built on commercially-available distributed compute will address questions about how biological complexity relates to fitness, genetic drift over elapsed evolutionary time, mutational load, genetic recombination (sex and horizontal gene transfer), ecology, historical contingency, and key innovations.
