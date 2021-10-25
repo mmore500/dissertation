@@ -10,30 +10,46 @@ on:
     - cron: '0 0 * * 0'
 
 jobs:
-  build-latex:
-    runs-on: ubuntu-latest
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-20.04
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v1
         with:
-          extra_system_packages: 'build-base bibtool moreutils pdftk'
-          root_file: main.tex
-          post_compile: 'make'
-      - run: mkdir deploy
-      - run: cp workspace-draft.pdf deploy/${{ github.event.repository.name }}-draft.pdf
+          push: true
+          tags: GITHUB_ACTION_${{ github.run_number }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mmore500/dissertation
+          add_git_labels: true
+
+  build-draft:
+    runs-on: ubuntu-20.04
+    needs:
+      - docker-build
+    container:
+      image: mmore500/dissertation:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --cap-add=SYS_ADMIN
+    steps:
+      - run: make -C /opt/dissertation
       - name: Upload output as artifact
         uses: actions/upload-artifact@main
         with:
           name: manuscript
-          path: deploy/${{ github.event.repository.name }}-draft.pdf
-      # test ch/ make recipe
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          extra_system_packages: 'build-base bibtool moreutils pdftk'
-          root_file: main.tex
-          post_compile: 'make -C ch/'
+          path: /opt/dissertation/${{ github.event.repository.name }}-draft.pdf
+
+  test-chapters:
+    runs-on: ubuntu-20.04
+    needs:
+      - docker-build
+    container:
+      image: mmore500/dissertation:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --cap-add=SYS_ADMIN
+    steps:
+      - run: make -C /opt/dissertation/ch
