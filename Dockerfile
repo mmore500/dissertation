@@ -12,9 +12,7 @@ WORKDIR /opt/dissertation
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
-  ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
-  && echo "Etc/UTC" > /etc/timezone \
-  && apt-get update -q \
+  apt-get update -q \
   && apt-get install -qy --no-install-recommends \
     bibtool \
     git \
