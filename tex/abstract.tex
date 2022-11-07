@@ -2,17 +2,27 @@ Evolutionary transitions occur when previously-independent replicating entities 
 For example, a fraternal transition involves lower-level entities that are kin joining together into a higher-level self-replicating entity (e.g., transitions to multicellularity or to eusocial colonies).
 Such major transitions in individuality have profoundly shaped complexity, novelty, and adaptation over the course of natural history and regard for their causes and consequences drives many fundamental questions in biology.
 Likewise, evolutionary transitions have been highlighted as key to artificial life research developing systems capable of true open-ended evolution.
-As such, experiments with digital multicellularity promise to help realize computational systems with properties that more closely resemble those of biological systems, ultimately providing insights about the origins of comlpex life in the natural world.
+As such, experiments with digital multicellularity promise to help realize computational systems with properties that more closely resemble those of biological systems, ultimately providing insights about the origins of complex life in the natural world.
 
-This dissertation proposal is divided into two parts.
-In the first part, I discuss the methodological stack that I am developing to enable dynamic, large-scale digital multicellularity experiments and analyses that leverage high performance computing hardware.
-This stack includes four important tools:
-(1) MatchBin, a tag-matching system to enable dynamic interaction in simple event-driven code,
-(2) SignalGP-lite, efficient virtual CPUs that use MatchBin for event-driven genetic programing,
-(3) the Conduit framework to allow highly scalable best-effort communication in distributed software, and
-(4) a proposed algorithm capable of partial phylogenetic reconstruction under distributed, lossy conditions.
+Existing aspects of digital evolution systems, however, are limited in their capabilities to leverage high performance computing hardware to realize the dynamic, large-scale simulation environments required for such work.
+This dissertation presents two new tools designed to faciliate digital multicellularity experiments at scale: the Conduit library for best-effort communication and a ``hereditary stratigraphy'' algorithm for phylogenetic annotation and inference.
 
-In the second part of this document these tools come together in the form of DISHTINY a distributed digital evolution system capable of producing and tracking populations of organisms as they undergo major evolutionary transitions in individuality.
-I discuss the research that I have conducted using DISHTINY and I propose my next steps in this line of research.
-The existing projects explore the breadth of multicelluar organisms produced and a case study delving into the evolutionary history of a single experiment.
-Finally, I propose a study testing the effect of the event-driven virtual CPU architecture on the evolution of complex multicelluar strategies.
+Most current parallel and distributed high performance computing work emphasizes logical determinism: extra effort is expended to guarantee reliable communication and, when necessary, computation halts in order to await expected communication.
+However --- at the expense of benefits of determinstic communication such as hardware-independence of algorithmic outcomes and perfect reproducibility --- adopting a best-effort communication model can reduce synchronization overhead and allow dynamic (albeit, lossy) scaling of communication load to fully take advantage of available resources.
+Here, we present a set of on-hardware experiments to empirically characterize the best-effort communication model implemented by the Conduit library on commercially available high-performance computing resources.
+We find that best-effort communication through Conduit enables significantly better computational performance under high thread and process counts and can help achieve significantly better solution quality within a fixed time constraint.
+
+In a similar vein, existing digital evolution work that incorporates phylogenetic analysis does so through a perfect tracking model where each birth event is recorded in a centralized data structures. 
+This approach, however, does not easily scale to distributed computing environments where evolutionary individuals may migrate between a large number of disjoint processing elements.
+To provide for phylogenetic analyses in these environments, we propose an approach to infer phylogenies via heritable genetic annotations rather than directly track them.
+We introduce hereditary stratigraphy, an algorithm that enables efficient, accurate phylogenetic reconstruction with tunable, explicit trade-offs between annotation memory footprint and reconstruction accuracy.
+This approach can estimate, for example, MRCA generation of two genomes within 10\% relative error with 95\% confidence up to a depth of a trillion generations with genome annotations smaller than a kilobyte.
+We also simulate inference over known lineages, recovering up to 85\% of the information contained in the original tree using a 64-bit annotation.
+
+We bring these tools come together in the form of DISHTINY, a distributed digital evolution system designed to study digital organisms as they undergo major evolutionary transitions in individuality.
+This system allows digital cells to form and replicate kin groups by selectively adjoining or expelling daughter cells;
+the capability to recognize kin-group membership enables preferential communication and cooperation between cells.
+We report group-level traits are characteristic of a fraternal transition, including reproductive division of labor, resource sharing within kin groups, resource investment in offspring groups, asymmetrical behaviors mediated by messaging, morphological patterning, and adaptive apoptosis.
+In one detailed case study, we track the co-evolution of novelty, complexity, and adaptation over the evolutionary history of an evolved strain.
+We characterize ten qualitatively distinct multicellular morphologies, several of which exhibit asymmetrical growth and distinct life stages.
+Our case study suggests a loose, sometimes divergent, relationship can exist among novelty, complexity, and adaptation.
