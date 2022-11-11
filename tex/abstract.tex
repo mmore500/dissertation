@@ -9,7 +9,7 @@ This dissertation presents two new tools designed to facilitate digital multicel
 
 Most current parallel and distributed high-performance computing work emphasizes logical determinism: extra effort is expended to guarantee reliable communication and, when necessary, computation halts in order to await expected messages.
 Determinism does enable hardware-independent algorithmic results and perfect reproducibility, however adopting a best-effort communication model can substantially reduce synchronization overhead and allow dynamic (albeit, potentially lossy) scaling of communication load to fully utilize available resources.
-Here, we present a set of experiments to empirically characterize the best-effort communication model implemented by the Conduit library on commercially available high-performance computing hardware.
+We present a set of experiments to empirically characterize the best-effort communication model implemented by the Conduit library on commercially available high-performance computing hardware.
 We find that best-effort communication through Conduit enables significantly better computational performance under high thread and process counts and can help achieve significantly better solution quality within a fixed time constraint.
 
 In a similar vein, existing digital evolution work that incorporates phylogenetic analysis does so through a perfect tracking model where each birth event is recorded in a centralized data structure.
