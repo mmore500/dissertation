@@ -1,28 +1,34 @@
 Evolutionary transitions occur when previously-independent replicating entities unite to form more complex individuals.
-For example, a fraternal transition involves lower-level entities that are kin joining together into a higher-level self-replicating entity (e.g., transitions to multicellularity or to eusocial colonies).
-Such major transitions in individuality have profoundly shaped complexity, novelty, and adaptation over the course of natural history and regard for their causes and consequences drives many fundamental questions in biology.
-Likewise, evolutionary transitions have been highlighted as key to developing artificial life research systems capable of true open-ended evolution.
-As such, experiments with digital multicellularity promise to help realize computational systems with properties that more closely resemble those of biological systems, ultimately providing insights about the origins of complex life in the natural world.
+Such major transitions in individuality have profoundly shaped complexity, novelty, and adaptation over the course of natural history.
+Regard for their causes and consequences drives many fundamental questions in biology.
+Likewise, evolutionary transitions have been highlighted as a hallmark of true open-ended evolution in artificial life.
+As such, experiments with digital multicellularity promise to help realize computational systems with properties that more closely resemble those of biological systems, ultimately providing insights about the origins of complex life in the natural world and contributing to bio-inspired distributed algorithm design.
 
-Existing aspects of digital evolution systems, however, are limited in their capabilities to leverage high performance computing hardware to realize the dynamic, large-scale simulation environments required for such work.
-This dissertation presents two new tools designed to facilitate digital multicellularity experiments at scale: the Conduit library for best-effort communication and a ``hereditary stratigraphy'' algorithm for phylogenetic annotation and inference.
+Major challenges exist, however, in applying high-performance computing hardware to realize the dynamic, large-scale digital artificial life simulations required for such work.
+This dissertation presents two new tools designed to facilitate digital multicellularity experiments at scale: the Conduit library for best-effort communication and the hstrat (``hereditary stratigraphy'') library, which debuts novel decentralized algorithms to estimate phylogenetic distance between evolving agents.
 
-Most current parallel and distributed high performance computing work emphasizes logical determinism: extra effort is expended to guarantee reliable communication and, when necessary, computation halts in order to await expected communication.
-However --- at the expense of benefits from deterministic communication such as hardware-independence of algorithmic results and perfect reproducibility --- adopting a best-effort communication model can reduce synchronization overhead and allow dynamic (albeit, lossy) scaling of communication load to fully utilize available resources.
-Here, we present a set of on-hardware experiments to empirically characterize the best-effort communication model implemented by the Conduit library on commercially available high-performance computing resources.
+Most current parallel and distributed high-performance computing work emphasizes logical determinism: extra effort is expended to guarantee reliable communication and, when necessary, computation halts in order to await expected messages.
+Determinism does enable hardware-independent algorithmic results and perfect reproducibility, however adopting a best-effort communication model can substantially reduce synchronization overhead and allow dynamic (albeit, potentially lossy) scaling of communication load to fully utilize available resources.
+Here, we present a set of experiments to empirically characterize the best-effort communication model implemented by the Conduit library on commercially available high-performance computing hardware.
 We find that best-effort communication through Conduit enables significantly better computational performance under high thread and process counts and can help achieve significantly better solution quality within a fixed time constraint.
 
-In a similar vein, existing digital evolution work that incorporates phylogenetic analysis does so through a perfect tracking model where each birth event is recorded in a centralized data structures.
-This approach, however, does not easily scale to distributed computing environments where evolutionary individuals may migrate between a large number of disjoint processing elements.
-To provide for phylogenetic analyses in these environments, we propose an approach to infer phylogenies via heritable genetic annotations rather than directly track them.
-We introduce hereditary stratigraphy, an algorithm that enables efficient, accurate phylogenetic reconstruction with tunable, explicit trade-offs between annotation memory footprint and reconstruction accuracy.
-This approach can estimate, for example, MRCA generation of two genomes within 10\% relative error with 95\% confidence up to a depth of a trillion generations with genome annotations smaller than a kilobyte.
-We also simulate inference over known lineages, recovering up to 85\% of the information contained in the original tree using a 64-bit annotation.
+In a similar vein, existing digital evolution work that incorporates phylogenetic analysis does so through a perfect tracking model where each birth event is recorded in a centralized data structure.
+This approach, however, does not easily scale to distributed computing environments where agents may migrate between a dynamic set of disjoint processing elements.
+Additionally, this perfect tracking approach is not robust to data loss or corruption.
+To provide for phylogenetic analyses in these environments, we propose an approach to infer phylogenies via heritable genetic annotations.
+We introduce hereditary stratigraphy, an algorithm that enables efficient, fault-tolerant phylogenetic reconstruction with tunable trade-offs between annotation memory footprint and reconstruction accuracy.
+For example, this approach can estimate the most recent common ancestor (MRCA) generation of two genomes within 10\% relative error with 95\% confidence up to a depth of a trillion generations with genome annotations smaller than a kilobyte.
+We simulate inference over known lineages, recovering up to 85\% of the information contained in the original tree using only a 64-bit annotation.
 
-We bring these tools come together in the form of DISHTINY, a distributed digital evolution system designed to study digital organisms as they undergo major evolutionary transitions in individuality.
-This system allows digital cells to form and replicate kin groups by selectively adjoining or expelling daughter cells;
-the capability to recognize kin-group membership enables preferential communication and cooperation between cells.
-We report group-level traits characteristic of fraternal transitions, including reproductive division of labor, resource sharing within kin groups, resource investment in offspring groups, asymmetrical behaviors mediated by messaging, morphological patterning, and adaptive apoptosis.
+We harness these tools in DISHTINY, a distributed digital evolution system designed to study digital organisms as they undergo major evolutionary transitions in individuality.
+This system allows digital cells to form and replicate kin groups by selectively adjoining or expelling daughter cells.
+The capability to recognize kin-group membership enables preferential communication and cooperation between cells.
+We report group-level traits characteristic of fraternal transitions in the natural world.
+These include reproductive division of labor, resource sharing within kin groups, resource investment in offspring groups, asymmetrical behaviors mediated by messaging, morphological patterning, and adaptive apoptosis.
 In one detailed case study, we track the co-evolution of novelty, complexity, and adaptation over the evolutionary history of an experiment.
 We characterize ten qualitatively distinct multicellular morphologies, several of which exhibit asymmetrical growth and distinct life stages.
 Our case study suggests a loose, sometimes divergent, relationship can exist among novelty, complexity, and adaptation.
+
+The constructive potential inherent in major evolutionary transitions holds great promise for progress toward replicating the capability and robustness of natural organisms.
+Coupled with shrewd software engineering and innovative model design informed by evolutionary theory, contemporary hardware systems could plausibly already suffice to realize paradigm-shifting advances in open-ended evolution and, ultimately, scientific understanding of major transitions themselves.
+This work establishes important new tools and methodologies to support continuing work in this direction.
