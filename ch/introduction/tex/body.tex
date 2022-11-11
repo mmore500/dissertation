@@ -12,9 +12,10 @@ Digital evolution techniques complement traditional wet-lab evolution experiment
 \item reproduction rate (which determines the number of generations that can be observed in a set amount of time),
 \item incomplete observations (every event in a digital system can be tracked),
 \item physically-impossible experimental manipulations (every event in a digital system can can be arbitrarily altered), or
-\item resource- and labor-intensity (digital experiments and assays can be easily automated).
+\item resource- and labor-intensity (digital experiments can be easily automated).
 \end{itemize}
-The versatility and rapid generational turnover of digital systems can easily engender a notion that such systems can already operate at scales greatly exceeding biological evolution experiments.
+
+Despite their versatility and rapid generational turnover, digital artificial life experiments generally operate at comparable or modest scales compared to laboratory biological evolution experiments.
 Although digital evolution techniques can feasibly simulate populations numbering in the millions, such experiments require simple agents with limited interactions.
 With more complex agents controlled by genetic programs, neural networks, or the like, feasible population sizes can dwindle down to thousands or even hundreds of agents.
 When considering major transitions to multicellularity -- where individual organisms are composed of many agents -- population sizes may drop to tens of organisms, far below desirable for many evolution experiments.
@@ -22,13 +23,13 @@ When considering major transitions to multicellularity -- where individual organ
 \section{Putting Scale in Perspective}
 
 Take Avida as an example, a popular software system for evolutionary experiments with self-replicating computer programs.
-In this system, a population of ten thousand can undergo approximately twenty thousand generations (or about two hundred million replication cycles) per day \citep{ofria2009artificial}.
-Each flask in the Lenski Long-Term Evolution Experiment hosts a similar number of replication cycles; with an effective population size of 30 million E. coli that undergo a bit more than 6.6 doublings per day, the bacteria expreince about 180 million replication events per day \citep{good2017dynamics}.
-Likewise, in Ratcliff’s work studying the evolution of multicellularity in S. cerevisiae, about six doublings per day occur among a population numbering on the order of a billion cells \citep{ratcliff2012experimental}.
+In this system, a population of ten thousand can undergo approximately twenty thousand generations (or about two hundred million individual replication cycles) per day \citep{ofria2009artificial}.
+Each flask in the Lenski Long-Term Evolution Experiment hosts a similar number of replication cycles; with an effective population size of 30 million \textit{E. coli} that undergo a bit more than 6.6 doublings per day, the bacteria experience about 180 million replication events per day \citep{good2017dynamics}.
+Likewise, in Ratcliff’s work studying the evolution of multicellularity in \texit{S. cerevisiae}, about six doublings per day occur among a population numbering on the order of a billion cells \citep{ratcliff2012experimental}.
 So, around six billion cellular replication cycles elapse per day in this system.
 
 Although artificial life practitioners traditionally describe instances of their simulations as ``worlds,'' with serial processing power their scale aligns (in naive terms) more along the lines of a single flask.
-Of course, such a comparison neglects the profound disparity between Avidians and bacteria or yeast in terms of complexity.
+Of course, such a comparison neglects profound disparities between Avidians and bacteria or yeast in terms of complexity.
 The natural organisms have vastly more genome information content, information content of cellular state, and both quantity and diversity of interactions with the environment and with other cells.
 Recent work with SignalGP has sought to address some of these shortcomings by developing digital evolution substrates suited to more dynamic environmental and agent-agent interactions \citep{lalejini2018evolving} that more effectively incorporate state information \citep{lalejini2021tag,lalejini2020case, moreno2019evaluating}.
 However, more sophisticated and interactive evolving agents will necessarily consume more CPU time on a per-replication-cycle basis --- further shrinking the magnitude of experiments tractable with serial processing.
@@ -36,7 +37,7 @@ However, more sophisticated and interactive evolving agents will necessarily con
 \section{The Future is Parallel}
 
 Throughout the 20th century, serial processing enjoyed regular advances in computational capacity due to quickening clock cycles, burgeoning RAM caches, and increasingly clever packing together of instructions during execution.
-Since, however, performance of serial processing has bumped up against apparent fundamental limits to computing’s current technological incarnation \citep{sutter2005free}.
+Since, however, performance of serial processing has bumped up against apparent fundamental limits to computing’s current technological foundations \citep{sutter2005free}.
 Instead, advances in 21st century computing power have arrived largely via multiprocessing \citep[p.~55]{hennessy2011computer} and hardware acceleration (e.g., GPU, FPGA, etc.) \citep{che2008accelerating}.
 Contemporary high-performance computing clusters link multiprocessors and accelerators with fast interconnects to enable coordinated work on a single problem \citep[p.~436]{hennessy2011computer}.
 High-end clusters already make hundreds of thousands or millions of cores available.
@@ -48,89 +49,86 @@ Such emerging technologies could make greatly vaster collections of computing de
 \section{Traditional Approaches to Digital Evolution at Scale Favor Isolation}
 
 Digital evolution practitioners have a rich history of leveraging distributed hardware.
-It is common practice to distribute multiple self-isolated instantiations of evolutionary runs over multiple hardware units.
-\footnote{
-Work on Network Tierra by Tom Ray, which featured arbitrary communication between digital organisms residing on different machines, stands as a notable exception \citep{ray1995proposal}.
-}
+It is common practice to distribute multiple self-isolated instantiations of evolutionary runs across multiple hardware units.
 In scientific contexts, this practice yields replicate datasets that provide statistical power to answer research questions \citep{dolson2017spatial}.
 In applied contexts, this practice yields many converged populations that can be scavenged for the best solutions overall \citep{hornby2006automated}.
-Another established practice is to use ``island models'' where individuals are transplanted between populations that are otherwise independently evolving across distributed hardware.
-Koza and collaborators’ genetic programming work with a 1,000-cpu Beowulf cluster typifies this approach \citep{bennett1999building}.
+Another established practice is to use ``island models'' where individuals are transplanted between populations residing on different pieces of distributed hardware.
+Koza and collaborators’ genetic programming work with a 1,000-CPU Beowulf cluster typifies this approach \citep{bennett1999building}.
 
 In recent years, Sentient Technologies spearheaded evolutionary computation projects on an unprecedented computational scale, comprising over a million CPUs and capable of a peak performance of 9 petaflops \citep{miikkulainen2019evolving}.
-According to its proponents, the scale and scalability of this DarkCycle system was a key aspect of its conceptualization \citep{gilbert2015artificial}.
+According to its proponents, the scale and scalability of this ``DarkCycle'' system was a key aspect of its conceptualization \citep{gilbert2015artificial}.
 Much of the assembled infrastructure was pieced together from heterogeneous providers and employed on a time-available basis \citep{blondeau2009distributed}.
-Unlike the model where selection events are performed independently on each CPU, this scheme transferred evaluation criteria between computational instances (in addition to individual genomes) \citep{hodjat2013distributed}.
+Unlike typical island models where selection occurs entirely independently on each CPU, this scheme transferred evaluation criteria between computational instances in addition to individual genomes \citep{hodjat2013distributed}.
+Sentient Technologies also notably exploited a large pool of hardware accelerators (e.g., 100 GPUs) in work evolving neural network architectures by performing each candidate architecture's costly model training and evaluation process \citep{miikkulainen2019evolving}.
 
-Sentient Technologies also accelerated the deep learning training process by using many massively-parallel hardware accelerators (e.g., 100 GPUs) to evaluate the performance of candidate neural network architectures on image classification, language modeling, and image captioning problems \citep{miikkulainen2019evolving}.
-Analogous work parallelizing the evaluation of an evolutionary individual over multiple test cases in the context of genetic programming has used GPU hardware and vectorized CPU operations
-\citep{harding2007fast_springer, langdon2019continuous}.
+Existing parallel and distributed digital evolution systems typically minimize interaction between simulation components on disjoint hardware.
+Such independence facilitates simple and efficient implementation.
+This typically involves independent evaluation of sub-populations (i.e., island models) or individuals (i.e., primary-subordinate or controller-responder parallelism \citep{cantu2001master}).
+Cases where evaluation of a single individual are parallelized often involve data-parallel evaluation over a set of independent test cases, which are subsequently consolidated into a single fitness profile \citep{harding2007fast_springer, langdon2019continuous}.
 
-Existing applications of concurrent approaches to digital evolution distribute populations or individuals across hardware to process them with minimal interaction.
-Task independence facilitates this simple, efficient implementation strategy, but precludes application on elements that are not independent.
-Parallelizing evaluation of a single individual often emphasizes data-parallelism over independent test cases, which are subsequently consolidated into a single fitness profile.
-With respect to model parallelism, Harding has notably applied GPU acceleration to cellular automata models of artificial development systems, which involve intensive interaction between spatially-distributed instantiation of a genetic program \citep{harding2007fast_ieee}.
-However, in systems where evolutionary individuals themselves are parallelized they are typically completely isolated from each other.
+However, several notable parallel and distributed digital evolution systems have incorporated rich interactions between parallelized simulation components.
+Harding applied GPU acceleration to cellular automata models of artificial development systems, which involve intensive interaction between spatially-distributed instantiation of a genetic program \citep{harding2007fast_ieee}.
+Work on Network Tierra by Tom Ray featured arbitrary communication between digital organisms residing on different machines \citep{ray1995proposal}
+More recently, in a continuation of much earlier work, Christian Heinemann's ongoing ALIEN project has leveraged GPU acceleration for perform physics-based simulation of soft body agents within a 2D arena \citep{heinemann2008artificial}.
 
 \section{Open-Ended Evolution at Scale Should Prioritize Interaction}
 
-We argue that, in a manner explicitly accommodating capabilities and limitations of available hardware, open-ended evolution should prioritize dynamic interactions between simulation elements situated across physically distributed hardware components.
+We argue that, in a manner explicitly accommodating capabilities and limitations of available hardware, open-ended artificial life systems should prioritize dynamic interactions between simulation elements situated across physically distributed hardware components.
 
 Unlike most existing applications of distributed computing in digital evolution, open-ended evolution research demands dynamic interactions among distributed simulation elements.
-Many of the most interesting natural phenomena, including ecologies, co-evolutionary dynamics, and social behavior, all arise from dynamic interactions among individuals.
-Distributed computing enables not merely larger populations and metapopulations, but also simulations of more computationally intensive digital organisms.
-However, developmental processes and emergent phenotypic functionality necessitate dynamic interactions among components of an individual organism.
+Many of the important natural phenomena, including ecologies, co-evolutionary dynamics, and social behavior, all arise from dynamic interactions among individuals.
+Likewise, at the scale of an individual organism, developmental processes and emergent phenotypic functionality necessitate dynamic interactions.
 
-A best-effort communication model could enable dynamic maximization of available bandwidth while avoiding scaling issues typically associated with communication-intensive distributed computing.
-Under such a model, processes compute simulation updates unimpeded and incorporating communication from collaborating processes as it happens to become available in real time.
-As stochastic algorithms performing computational search with a broad set of acceptable outcomes, many digital evolution simulations are well disposed to a best-effort approach.
+A best-effort communication model could enable maximization of available bandwidth while avoiding scaling issues typically associated with communication-intensive distributed computing.
+Under such a model, processes compute simulation updates unimpeded and incorporate communication from collaborating processes as it happens to become available in real time.
+As stochastic algorithms performing computational search with a broad set of acceptable outcomes, many digital evolution simulations are well suited to such a best-effort approach.
 
 \section{Digital Multicellularity Suits Distributed Computing}
 
 Multicellularity poses an attractive model to harness distributed computing power for digital evolution.
-The basic notion is to achieve simulation dynamics that outstrip tractability on an individual piece of hardware via an interacting network of discrete cellular components simple enough to reside on individual pieces of hardware.
+The basic notion is to achieve simulation dynamics that outstrip the capabilities of individual hardware components via an interacting network of discrete cellular components simple enough to reside on individual pieces of hardware.
 Indeed, early thinking around composing digital organisms of differentiated components revolved around the possibility of multithreading and multiprocessing.
 However, this work eschews a spatial model for cellular interaction in favor of a logical approach where ``cellular'' threads traversed logical space within a replicating program \citep{ofria1999evolution,ray2000evolution}.
 
 Only later did Goldsby's multicellularity experiments introduce a spatial model for digital multicellularity, in which cells composing each digital ``multicell'' occupied tiles in a unique two-dimensional subgrid \citep{goldsby2014evolutionary}.
-The clonal colony of cells constituting each multicell exists in within an isolated spatial domain provisioned by the simulation.
+The clonal colony of cells constituting each multicell exists within an isolated spatial domain provisioned by the simulation.
 Two distinct modes of reproduction occur in these experiments:
 (1) cells replicate within a multicell and
 (2) multicells reproduce by sending a single cell to found a new organism --- the target multicell is sterilized then re-innoculated with the cell supplied by the parent.
-Although Goldsby did not pursue hardware acceleration of cell components within a multicell, such a spatial approach presents novel possibilities for leveraging multiple CPUs.
-Assuming local interactions, cells in a spatial model enjoy relatively few targets for direct communication.
+Although Goldsby did not pursue hardware acceleration of cell components within a multicell, such a spatial approach could facilitate parallelization.
+Assuming local interactions, cells in a spatial model communicate directly with relatively few other simulation elements (i.e., their neighbors).
 Such limitation suits a distributed computing approach.
 
-In fact, at truly vast scales where physical distance between hardware components limits viable communication, simulation topology that maps nicely into three-dimensional space will become highly advantageous.
+In fact, at truly vast scales where physical distance between hardware components limits viable communication, simulation topology that maps into three-dimensional space will become highly advantageous.
 (This argument is a foundational tenet of Ackley's ``indefinite'' scalability \citep{ackley2011pursue}.)
 David Ackley's recent work on emergent digital protocells exemplifies algorithm engineering grounded in spatial considerations with respect to potential underlying distributed physical hardware \citep{ackley2018digital,ackley2019building}.
 
-% @CAO: I feel like you can say quire a bit more then what you do in this next sentence- you don't just develop the mecahnics, you develop everything: The tag system for the event-based virtual CPU model, the DISHTINY environment, the comunications protocol framework, and the analysis tools. You want to make sure that people don't read this and assume that the below is all you did...
-This approach presented in this dissertation extends Goldsby's spatial model of digital multicellularity by developing mechanics for arbitrary interactions between multicells (e.g., competition, parental care for offspring, etc.) within a unified spatial realm.
+The approach presented in this dissertation extends Goldsby's spatial model of digital multicellularity by developing mechanics to enable arbitrary interactions between multicells (e.g., competition, parental care for offspring, etc.) within a unified spatial realm.
+(The DISHTINY model incorporates other notable changes, as well, such as an event-driven genetic programming substrate and directionally-symmetric agent evaluation.)
 
 \section{Major Evolutionary Transitions and Open-Ended Evolution}
 
-The emergence of new replicating entities from the union of simpler entities represent some of the most profound events in natural evolutionary history \citep{smith1997major}.
+Emergence of new replicating entities from the union of simpler entities constitutes some of the most profound events in natural evolutionary history \citep{smith1997major}.
 In an evolutionary transition of individuality, a new, more complex replicating entity is derived from the combination of cooperating replicating entities that have irrevocably entwined their long-term fates \citep{west2015major}.
 Such transitions in individuality are essential to the evolution of the most complex forms of life.
 As such, these transitions have been highlighted as key research targets with respect to the question of open-ended evolution \citep{ray1996evolving, banzhaf2016defining}.
 
 In particular, this dissertation focuses on fraternal transition in individuality, events where closely-related kin come together or stay together to form a higher-level organism \citep{queller1997cooperators}.
 Eusocial insect colonies and multicellular organisms exemplify this phenomenon \citep{smith1997major}.
-Potential evolvability of fraternal collectives makes them an attractive evolutionary substrate.
+Potential evolvability properties of fraternal collectives makes them an attractive evolutionary substrate.
 Multicellular bodies configured through generative development (i.e., with indirect genetic representation) can promote scalable properties \citep{lipson2007principles} such as modularity, regularity, and hierarchy \citep{hornby2005measuring, clune2011performance}.
 Developmental processes may also promote canalization \citep{stanley2003taxonomy}, for example through exploratory processes and compensatory adjustments \citep{gerhart2007theory}.
 
 Scientific understanding of fraternal transitions in individuality benefits from experimental work probing the origins of multicellularity.
 In the biological domain, Ratcliff et al. have demonstrated evolution of multicellularity in yeast, deriving fraternal clusters of cells that cling together in order to maximize their settling rate \citep{ratcliff2012experimental}.
-As noted earlier, the contributions of Goldsby and collaborators are particularly notable among computational Artificial life work on the origins of multicellularity.
+As mentioned earlier, the contributions of Goldsby and collaborators are particularly notable among computational artificial life work on the origins of multicellularity.
 Goldsby et al. have studied the evolution of division of labor \citep{goldsby2010evolution, goldsby2012task}, the origin of soma \citep{goldsby2014evolutionary}, and the evolution of morphological development \citep{goldsby2017increasing}.
 
 \section{Thesis Statement}
 
 \noindent\fbox{%
 \parbox{\textwidth}{%
-Scalable digital evolution systems leveraging best-effort communication will enable us to study key phenomena associated with open-ended evolution: the origins of novel traits and behaviors, complex organsims and ecologies, and major evolutionary transitions in individuality.
+Scalable digital evolution systems leveraging best-effort communication will enable us to study key phenomena associated with open-ended evolution: the origins of novel traits and behaviors, complex organisms and ecologies, and major evolutionary transitions in individuality.
 }%
 }
 
@@ -148,14 +146,15 @@ In addition to developing hardware-agnostic theory and methodology, we believe t
 
 \section{Contributions}
 
-Deepening our scientific understanding of major evolutionary transitions in individuality provides crucial insight into how the remarkable diversity and complexity of biological life came to be and may yield practical capabilities to replicate aspects of lifelike capability via algorithms for search and optimization.
-Digital evolution enables unique experimental approaches to investigate evolutionary questions, but computational limitations restrict the scope of systems that can be modeled --- a particular barrier with respect to digital evolution models of multicellularity.
-In this dissertation I will demonstrate techniques that I designed in order to overcome such computational limitations and then apply these new capabilities to design a scalable digital evolution system of allowing organisms to undergo transitions in individuality.
-I will also use this system to investigate specific questions associated with those transitions and complexity, novelty, and adaptation.
+Deepening our scientific understanding of major evolutionary transitions in individuality provides crucial insight into how the remarkable diversity and complexity of biological life came to be and may yield facilitate replication of lifelike capabilities \textit{in silico}.
+Digital evolution enables unique experimental approaches to investigate evolutionary questions, but computational limitations restrict the scope of systems that can be modeled.
+Such practicalities are particularly cumbersome to digital models of multicellularity.
+This dissertation develops and tests approaches to improve scalability of artificial life simulations and applies them to construct a scalable simulation system for digital multicellularity.
+We then use this system to study the relationships between major transitions, complexity, novelty, and adaptation.
 
 Contributions of this dissertation are fivefold:
 \begin{itemize}
-\item implementing and characterizing techniques for general-purpose best-effort high performance computing,
+\item implementing and evaluating techniques for general-purpose best-effort high-performance computing,
 \item developing and implementing methodology for scalable simulations of evolving digital multicells that allows for arbitrary interactions between multicells in a unified spatial realm,
 \item demonstrating metrics that can efficiently quantify complexity and adaptation in an system with implicit selection dynamics, and
 \item characterizing the evolution of complexity, novelty, and adaptation of digital multicells in an open-ended system.
@@ -167,21 +166,20 @@ The work described here aims to spur reciprocal innovations:
 \item the unique objectives and latitude of artificial life will foster novel distributed computing techniques.
 \end{itemize}
 
+\section{Outline}
+
 The remainder of this dissertation is divided up as followed:
 
 Part \ref{part:infrastructure} describes computational infrastructure that was developed to enable scalable digital multicellularity experiments.
 \begin{itemize}
-\item Chapter \ref{ch:tag-matching} evaluates the variational, geometric, and evolutionary properties of several tag-matching schemes \citep{lalejini2018evolving}, and was used to select a suitable algorithm for use labeling executable segments within cell-level digital organisms,
-\item Chapter \ref{ch:signalgp-lite} describes an optimized, stripped down implementation of the SignalGP representation for event-driven genetic programming \citep{lalejini2018evolving}, which yielded a several-fold speedup over the previous implementation,
-\item Chapter \ref{ch:conduit} presents the Conduit library for Best-effort High Performance Computing, experimentally demonstrating the scalability benefits of the best-effort approach, and
-\item Chapter \ref{ch:distributed-phylogeny} proposes an approach to record phylogenetic information in decentralized artificial life experiments.
+\item Chapter \ref{ch:conduit} presents the Conduit library for best-effort high-performance computing, experimentally demonstrating the scalability benefits of the best-effort approach, and
+\item Chapter \ref{ch:distributed-phylogeny} proposes and tests the ``hereditary stratigraphy'' approach to record phylogenetic information in decentralized artificial life experiments.
 \end{itemize}
 
 Part \ref{part:experiments} reports experiments performed using the DISHTINY digital multicellularity framework.
 \begin{itemize}
-\item Chapter \ref{ch:case-studies} surveys multicellular life histories evolved within the framework,
-\item Chapter \ref{ch:measuring-cna} studies the coevolution of complexity, novelty, and adaptation in a case study lineage, and
-\item Chapter \ref{ch:influencing-cna} proposes work to test the influence of event-driven genetic programming representation on the evolution of multicellular complexity and adaptation.
+\item Chapter \ref{ch:case-studies} surveys multicellular life histories evolved within the framework, and
+\item Chapter \ref{ch:measuring-cna} studies the coevolution of complexity, novelty, and adaptation in a case study lineage.
 \end{itemize}
 
 Finally, Chapter \ref{ch:conclusion} provides concluding remarks and describes directions in which this research should continue.
