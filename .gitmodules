@@ -10,3 +10,6 @@
   path = ch/case-studies/submodules/frontiers-2021
   url = https://github.com/mmore500/frontiers-2021.git
   shallow = true
+[submodule "ch/distributed-phylogeny/submodules/hereditary-stratigraph-concept"]
+	path = ch/distributed-phylogeny/submodules/hereditary-stratigraph-concept
+	url = https://github.com/mmore500/hereditary-stratigraph-concept.git

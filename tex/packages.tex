@@ -1,4 +1,4 @@
-\usepackage{adjustbox}
+\usepackage[export]{adjustbox}
 \usepackage{afterpage}
 \usepackage{algorithmic}
 % \usepackage{algpseudocode}
@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{cite}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage{colortbl}
 \usepackage{comment}
 \usepackage{csquotes}
 \usepackage{csvsimple}
@@ -21,12 +22,14 @@
 \usepackage{graphics}
 \usepackage{grffile} % https://tex.stackexchange.com/a/110518
 \usepackage{hyperref}
+\usepackage{ifthen}
 \usepackage{import}
 \usepackage{indentfirst}
 \usepackage{layout}
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{lscape}
+\usepackage{makecell}
 \usepackage[footnotes,definitionLists,hashEnumerators,smartEllipses,hybrid]{markdown}
 \usepackage{morewrites}
 \usepackage[resetlabels]{multibib}
@@ -40,9 +43,12 @@
 \npthousandsep{\,}
 \usepackage[parfill]{parskip}
 \usepackage{pdflscape}
+\usepackage[section]{placeins}
+\usepackage{pythonhighlight}
 \usepackage{rotating}
 \usepackage{setspace}
 \usepackage{siunitx}
+\usepackage{stringstrings}
 \usepackage{subcaption}
 \usepackage{tabulary}
 \usepackage{tabularx}
@@ -52,7 +58,9 @@
 \usepackage[flushleft]{threeparttable}
 \usepackage{tocloft}
 \usepackage{url}
-\usepackage[table,xcdraw]{xcolor}
+% \usepackage[table,xcdraw]{xcolor}
+\usepackage{xfp}
+\usepackage{xparse}
 \usepackage{xstring}
 % tikz must load after xcolor, https://tex.stackexchange.com/a/51490
 \usepackage{tikz}
