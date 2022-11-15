@@ -11,25 +11,25 @@ In a shared-memory context, it is not difficult to maintain a complete phylogeny
 As simulations progress for longer durations, memory usage will typically grow at least linearly if population sizes are fixed, or worse if populations are growing or organisms are becoming more complex.
 These problems are easily ameliorated, however, by performing garbage collection on extinct lineages and saving older history to disk \citep{bohm2017mabe,dolson2019modes}.
 
-Phylogenetic tracking in a distributed context, where linages may traverse many machines, requires algorithmic adjustment.
+Phylogenetic tracking in a distributed context, where lineages may traverse many machines, requires algorithmic adjustment.
 However, if sufficient memory or disk space can be afforded to log all reproduction events, recording a perfect phylogeny in a distributed context is still not especially difficult.
 Processes could maintain records of each reproduction event, storing the parent organism (and its associated process) with all generated offspring (and their destination processes).
 As long as no data goes missing and organisms are uniquely identified globally, these ``dangling ends'' could be joined in postprocessing to weave a continuous global phylogeny.
-Of course, for the huge population sizes made possible by distirbuted systems, such stitching may become a demanding task in and of itself.
+Of course, for the huge population sizes made possible by distributed systems, such stitching may become a demanding task in and of itself.
 
-However, if memory and disk space are limited, distributed phylogeny tracking becomes a more burdonsome challenge.
+However, if memory and disk space are limited, distributed phylogeny tracking becomes a more burdensome challenge.
 A naive approach might employ a server model to maintain a central store of phylogenetic data.
-Processes would dispatch notifications of birth and death events to the server, which would curate (and gabage collect) phylogenetic history much the same as current serial phylogenetic tracking implementations.
+Processes would dispatch notifications of birth and death events to the server, which would curate (and garbage collect) phylogenetic history much the same as current serial phylogenetic tracking implementations.
 However, this server model approach would present profound scalability challenges: communication and computation burden on the server process would worsen in direct proportion to processor count, and processes would frequently need to pause while waiting for confirmation that a reproduction event was successfully reported.
 As organisms became more complex, large genome size could further worsen the communication burden.
-A more scalable approach would record birth and death events only on the process(ds) where they unfold.
+A more scalable approach would record birth and death events only on the process(es) where they unfold.
 However, even if it went extinct locally, any lineage that had dispatched offspring to neighboring processes could not be safely garbage collected until the extinction of that dispatched offspring's lineage could be confirmed.
 So, garbage collection would require involve extinction notifications to wind back across processes each lineage had traversed.
 
 
 Under a best-effort model, no system of phylogeny tracking can guarantee proper garbage collection.
-For example, it would be possible for an offspring that was dispatched to a neighboring process to have failed to arrive, and both processes would need to keep going, dispite the failure.
-So, extinction notifications for the lineage founded by that offspring would never be dispatched --- putting in motion a memory leak of un-garbabe-collectable phylogenetic history.
+For example, it would be possible for an offspring that was dispatched to a neighboring process to have failed to arrive, and both processes would need to keep going, despite the failure.
+So, extinction notifications for the lineage founded by that offspring would never be dispatched --- putting in motion a memory leak of un-garbage-collectible phylogenetic history.
 The situation becomes even more leaky when the possibility of extinction notifications themselves being lost.
 
 In a distributed context --- especially, a distributed, best-effort context --- phylogenetic reconstruction (as opposed to tracking) could prove simpler and more efficient at runtime while providing sufficient power to address experimental questions of interest.
@@ -85,11 +85,11 @@ To complete this chapter, I will present this approach in more detail, derive it
 To our knowledge, this chapter provides a novel solution to a unexplored problem (designing digital genome components that enable phylogenetic reconstruction in the absence of phylogenetic tracking).
 
 Such techniques will be essential for artificial life experiments that use distributed and best-effort computing approaches.
-These methods will enable phylogentic analyses in distributed, best-effort systems while preserving those systems' efficiency and scalability.
+These methods will enable phylogenetic analyses in distributed, best-effort systems while preserving those systems' efficiency and scalability.
 As parallel and distributed computing becomes increasingly ubiquitous and begins to more widely pervade artificial life systems, this will be a useful technique in the toolbox.
-These tenchiques may, in addition, serve some use in traditional serial artificial life simulations as a stopgap in the absence of infrastructure for proper phylogenetic tracking.
+These techniques may, in addition, serve some use in traditional serial artificial life simulations as a stopgap in the absence of infrastructure for proper phylogenetic tracking.
 
-Finally, the problem of designing genomes to maximize phlogenetic reconstructability rasies unique questions about phylogenetic estimation.
+Finally, the problem of designing genomes to maximize phylogenetic reconstructability raises unique questions about phylogenetic estimation.
 Such a backward problem --- optimizing genomes to make analyses trivial as opposed to the usual process of optimizing analyses to genomes --- puts questions about the genetic information analyses operate on in a new light.
 In particular, the problem of maximum-reconstructability is well suited to extension to derive results on best-case certain bounds of reconstruction algorithms.
 In future work, it may be especially interesting to consider the problem of maximizing reconstructibility for a fixed-size genetic component.
