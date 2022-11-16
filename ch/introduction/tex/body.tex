@@ -8,10 +8,11 @@ Portions of this chapter are adapted from ~\citep{moreno2019toward}, ~\citep{mor
 
 Emergence of new replicating entities from the union of simpler entities constitutes some of the most profound events in natural evolutionary history \citep{smith1997major}.
 In an evolutionary transition of individuality, a new, more complex replicating entity is derived from the combination of cooperating replicating entities that have irrevocably entwined their long-term fates \citep{west2015major}.
-Eusocial insect colonies and multicellular organisms exemplify this phenomenon \citep{smith1997major}.Such transitions in individuality are essential to the evolution of the most complex forms of life.
+Eusocial insect colonies and multicellular organisms exemplify this phenomenon \citep{smith1997major}.
+Such transitions in individuality are essential to the evolution of the most complex forms of life.
 As such, these transitions have been highlighted as key research targets with respect to the question of open-ended evolution \citep{ray1996evolving, banzhaf2016defining}.
 
-In particular, this dissertation focuses on fraternal transition in individuality, events where closely-related kin come together or stay together to form a higher-level organism \citep{queller1997cooperators}.
+In particular, this dissertation focuses on fraternal transitions in individuality --- events where closely-related kin come together or stay together to form a higher-level organism \citep{queller1997cooperators}.
 Potential evolvability properties of fraternal collectives makes them an attractive evolutionary substrate.
 Multicellular bodies configured through generative development (i.e., with indirect genetic representation) can promote scalable properties \citep{lipson2007principles} such as modularity, regularity, and hierarchy \citep{hornby2005measuring, clune2011performance}.
 Developmental processes may also promote canalization \citep{stanley2003taxonomy}, for example through exploratory processes and compensatory adjustments \citep{gerhart2007theory}.
@@ -24,7 +25,7 @@ Goldsby’s work extends the Avida model system \citep{ofria2009artificial}, bre
 Direct selection for collective, colony-level characteristics drives evolution of cooperative cellular traits characteristic of a transition to colony-level individuality.
 When a colony meets selection criteria, a propagule from that colony is inoculated into a freshly-cleared population slot.
 Cells explicitly self-designate eligibility to parent a propagule.
-This clear distinction between somatic and gametogenic modes of reproduction has proven particularly useful in experiments studying the origin of soma \citep{goldsby2014evolutionary} and multicellular entrenchment \citep{goldsby2020major}.
+This clear distinction between somatogenic and gametogenic modes of reproduction has proven particularly useful in experiments studying the origin of soma \citep{goldsby2014evolutionary} and multicellular entrenchment \citep{goldsby2020major}.
 Other work by Goldsby et al. has investigated the evolution of division of labor \citep{goldsby2010evolution, goldsby2012task} and the evolution of morphological development \citep{goldsby2017increasing}.
 
 \section{Digital Evolution Models}
@@ -40,7 +41,7 @@ Digital evolution techniques complement traditional wet-lab evolution experiment
 Despite their versatility and rapid generational turnover, digital artificial life experiments generally operate at comparable or modest scales compared to laboratory biological evolution experiments.
 Although digital evolution techniques can feasibly simulate populations numbering in the millions, such experiments require simple agents with limited interactions.
 With more complex agents controlled by genetic programs, neural networks, or the like, feasible population sizes can dwindle down to thousands or even hundreds of agents.
-When considering major transitions to multicellularity -- where individual organisms are composed of many agents -- population sizes may drop to tens of organisms, far below desirable for many evolution experiments.
+When considering major transitions to multicellularity --- where individual organisms are composed of many agents --- population sizes may drop to tens of organisms, far below desirable for many evolution experiments.
 
 \section{Putting Scale in Perspective}
 
@@ -67,8 +68,11 @@ Scalable digital evolution systems leveraging best-effort communication will ena
 \section{A Path of Expanding Computational Scale}
 
 While by no means certain, the idea that orders-of-magnitude increases in compute power will open up qualitatively different possibilities with respect to open-ended evolution is both promising and well founded.
-Spectacular advances achieved with artificial neural networks over the last decade illuminate a possible path toward this outcome. As with digital evolution, artificial neural networks (ANNs) were traditionally understood as a versatile, but auxiliary methodology — both techniques have been described as ``the second best way to do almost anything'' \citep{miaoulis2008intelligent,eiben2015introduction}.
-However, the utility and ubiquity of ANNs has since increased dramatically. The development of AlexNet is widely considered pivotal to this transformation. AlexNet united methodological innovations from the field (such as big datasets, dropout, and ReLU) with GPU computing that enabled training of orders-of-magnitude-larger networks.
+Spectacular advances achieved with artificial neural networks over the last decade illuminate a possible path toward this outcome.
+As with digital evolution, artificial neural networks (ANNs) were traditionally understood as a versatile, but auxiliary methodology --- both techniques have been described as ``the second best way to do almost anything'' \citep{miaoulis2008intelligent,eiben2015introduction}.
+However, the utility and ubiquity of ANNs has since increased dramatically.
+The development of AlexNet is widely considered pivotal to this transformation.
+AlexNet united methodological innovations from the field (such as big datasets, dropout, and ReLU) with GPU computing that enabled training of orders-of-magnitude-larger networks.
 In fact, some aspects of their deep learning architecture were expressly modified to accommodate multi-GPU training \citep{krizhevsky2012imagenet}.
 By adapting existing methodology to exploit commercially available hardware, AlexNet spurred the greater availability of compute resources to the research domain and eventually the introduction of custom hardware to expressly support deep learning \citep{jouppi2017datacenter}.
 
@@ -78,8 +82,8 @@ In addition to developing hardware-agnostic theory and methodology, we believe t
 
 \section{The Future is Parallel}
 
-Throughout much of the 20th century, serial processing enjoyed regular advances in computational capacity due to quickening clock cycles, burgeoning RAM caches, and increasingly clever packing together of instructions during execution.
-Since, however, performance of serial processing has bumped up against apparent fundamental limits to computing’s current technological foundations \citep{sutter2005free}.
+Throughout much of the 20th century, serial processing enjoyed regular advances in computational capacity due to quickening clock cycles, burgeoning RAM and caches, and increasingly clever packing together of instructions during execution.
+Since, however, performance of serial processing has bumped up against apparent fundamental limits to the current technological foundations of computing \citep{sutter2005free}.
 Instead, advances in 21st century computing power have arrived largely via multiprocessing \citep[p.~55]{hennessy2011computer} and specialized hardware acceleration (e.g., GPU, FPGA, etc.) \citep{che2008accelerating}.
 Contemporary high-performance computing clusters link multiprocessors and accelerators with fast interconnects to enable coordinated work on a single problem \citep[p.~436]{hennessy2011computer}.
 High-end clusters already make hundreds of thousands or millions of cores available.
@@ -143,7 +147,7 @@ Assuming local interactions, cells in a spatial model communicate directly with 
 Such a limitation suits a distributed computing approach.
 
 In fact, at truly vast scales where physical distance between hardware components limits viable communication, simulation topology that maps into three-dimensional space will become highly advantageous.
-(This argument is a foundational tenet of Ackley's ``indefinite'' scalability \citep{ackley2011pursue}.)
+This argument is a foundational tenet of Ackley's ``indefinite'' scalability \citep{ackley2011pursue}.
 David Ackley's recent work on emergent digital protocells exemplifies algorithm engineering grounded in spatial considerations with respect to potential underlying distributed physical hardware \citep{ackley2018digital,ackley2019building}.
 
 The approach presented in this dissertation extends Goldsby's spatial model of digital multicellularity by developing mechanics to enable arbitrary interactions between multicells (e.g., competition, parental care for offspring, etc.) within a unified spatial realm.
