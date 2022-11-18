@@ -32,6 +32,7 @@ RUN \
     make \
     moreutils \
     pdftk \
+    pcregrep \
   && rm -rf /var/lib/apt/lists/*
 
 CMD ["bash"]
