@@ -1,4 +1,4 @@
-FROM thomasweise/docker-texlive-full:1.1
+FROM thomasweise/docker-texlive-full:2.0
 
 COPY . /opt/dissertation/
 
