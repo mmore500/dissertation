@@ -43,12 +43,48 @@ jobs:
       # github actions requires root to access mounted volumes
       options: --cap-add=SYS_ADMIN
     steps:
-      - run: make -C /opt/dissertation
+      - run: make -C /opt/dissertation draft
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: draft
+          path: /opt/dissertation/${{ github.event.repository.name }}-draft.pdf
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: manuscript draft
+          path: /opt/dissertation/${{ github.event.repository.name }}-manuscript-draft.pdf
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: supplement draft
+          path: /opt/dissertation/${{ github.event.repository.name }}-supplement-draft.pdf
+
+  build-release:
+    runs-on: ubuntu-20.04
+    needs:
+      - docker-build
+    container:
+      image: mmore500/dissertation:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --cap-add=SYS_ADMIN
+    steps:
+      - run: make -C /opt/dissertation release
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: release
+          path: /opt/dissertation/${{ github.event.repository.name }}.pdf
       - name: Upload output as artifact
         uses: actions/upload-artifact@main
         with:
           name: manuscript
-          path: /opt/dissertation/${{ github.event.repository.name }}-draft.pdf
+          path: /opt/dissertation/${{ github.event.repository.name }}-manuscript.pdf
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: supplement
+          path: /opt/dissertation/${{ github.event.repository.name }}-supplement.pdf
 
   test-chapters:
     runs-on: ubuntu-20.04

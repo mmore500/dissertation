@@ -28,6 +28,7 @@ RUN \
     git \
     make \
     moreutils \
+    pdftk \
   && rm -rf /var/lib/apt/lists/*
 
 CMD ["bash"]
