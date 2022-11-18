@@ -12,6 +12,15 @@ WORKDIR /opt/dissertation
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
+  echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo 'Acquire::ftp::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo 'Acquire::Retries "100";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo "buffed apt-get resiliency"
+
+RUN \
   apt-get update -q --allow-unauthenticated \
   && apt-get install -qy --no-install-recommends \
     bibtool \
