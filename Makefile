@@ -7,9 +7,9 @@ all: ${BUILD_DIR}-draft.pdf
 view:
 	atom ${BUILD_DIR}.pdf
 
-DRAFT_SUPPLEMENT_PAGE = $(shell pdftk ${BUILD_DIR}-draft.pdf dump_data_utf8 | pcregrep -M -o1 '^BookmarkBegin\nBookmarkTitle: APPENDICES\nBookmarkLevel: 2\nBookmarkPageNumber: ([0-9]+)$$')
+DRAFT_SUPPLEMENT_PAGE = $(shell pdftk ${BUILD_DIR}-draft.pdf dump_data_utf8 | pcregrep -M -o1 '^BookmarkBegin\nBookmarkTitle: APPENDICES\nBookmarkLevel: 2\nBookmarkPageNumber: ([0-9]+)$$' | xargs -l1 expr 2 +)
 
-RELEASE_SUPPLEMENT_PAGE = $(shell pdftk ${BUILD_DIR}.pdf dump_data_utf8 | pcregrep -M -o1 '^BookmarkBegin\nBookmarkTitle: APPENDICES\nBookmarkLevel: 2\nBookmarkPageNumber: ([0-9]+)$$')
+RELEASE_SUPPLEMENT_PAGE = $(shell pdftk ${BUILD_DIR}.pdf dump_data_utf8 | pcregrep -M -o1 '^BookmarkBegin\nBookmarkTitle: APPENDICES\nBookmarkLevel: 2\nBookmarkPageNumber: ([0-9]+)$$' | xargs -l1 expr 2 +)
 
 draft: ${BUILD_DIR}-draft.pdf ${BUILD_DIR}-manuscript-draft.pdf ${BUILD_DIR}-supplement-draft.pdf
 
