@@ -21,7 +21,7 @@ RUN \
   echo "buffed apt-get resiliency"
 
 # fix jdk install bug https://github.com/geerlingguy/ansible-role-java/issues/64#issuecomment-597132394
-RUN mkdir /usr/share/man/man1/
+RUN mkdir -p /usr/share/man/man1/
 
 RUN \
   apt-get clean \
