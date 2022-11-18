@@ -20,9 +20,9 @@ RUN \
     && \
   echo "buffed apt-get resiliency"
 
-# --no-cache see https://askubuntu.com/a/1267194
 RUN \
-  apt-get update -q --allow-unauthenticated --no-cache \
+  apt-get clean \
+  && apt-get update -q --allow-unauthenticated \
   && apt-get install -qy --no-install-recommends \
     bibtool \
     git \
