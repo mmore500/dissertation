@@ -28,6 +28,9 @@ Cells explicitly self-designate eligibility to parent a propagule.
 This clear distinction between somatic and gametogenic modes of reproduction has proven particularly useful in experiments studying the origin of soma \citep{goldsby2014evolutionary} and multicellular entrenchment \citep{goldsby2020major}.
 Other work by Goldsby et al. has investigated the evolution of division of labor \citep{goldsby2010evolution, goldsby2012task} and the evolution of morphological development \citep{goldsby2017increasing}.
 
+This dissertation build's on Goldsby's work by relaxing simulation constraints to enable broad genetic determination of multicellular life history and allowing for unconstrained cellular interactions between multicellular bodies.
+This approach enables new perspective in digital evolution work, especially with respect to biotic interactions.
+
 \section{Digital Evolution Models}
 
 Digital evolution techniques complement traditional wet-lab evolution experiments by enabling researchers to address questions that would be otherwise limited by:
@@ -61,13 +64,15 @@ However, more sophisticated and interactive evolving agents will necessarily con
 
 \noindent\fbox{%
 \parbox{\textwidth}{%
+\textbf{
 Scalable digital evolution systems leveraging best-effort communication will enable us to study key phenomena associated with open-ended evolution: the origins of novel traits and behaviors, complex organisms and ecologies, and major evolutionary transitions in individuality.
+}%
 }%
 }
 
 \section{A Path of Expanding Computational Scale}
 
-While by no means certain, the idea that orders-of-magnitude increases in compute power will open up qualitatively different possibilities with respect to open-ended evolution is both promising and well founded.
+The idea that orders-of-magnitude increases in compute power will open up qualitatively different possibilities with respect to open-ended evolution is both promising and well founded.
 Spectacular advances achieved with artificial neural networks over the last decade illuminate a possible path toward this outcome.
 As with digital evolution, artificial neural networks (ANNs) were traditionally understood as a versatile, but auxiliary methodology --- both techniques have been described as ``the second best way to do almost anything'' \citep{miaoulis2008intelligent,eiben2015introduction}.
 However, the utility and ubiquity of ANNs has since increased dramatically.
@@ -161,31 +166,32 @@ Such practicalities are particularly cumbersome to digital models of multicellul
 This dissertation develops and tests approaches to improve scalability of artificial life simulations and applies them to construct a scalable simulation system for digital multicellularity.
 We then use this system to study the relationships between major transitions, complexity, novelty, and adaptation.
 
-Contributions of this dissertation are:
+Contributions of this dissertation include:
 \begin{itemize}
+\item \textit{de novo} production of complex multicellular organisms without employing a segregating topology to force such a transition,
+\item demonstrating metrics that can efficiently quantify complexity and adaptation in an system with implicit selection dynamics,
+\item characterizing the evolution of complexity, novelty, and adaptation of digital multicells in an open-ended system,
 \item implementing and evaluating techniques for general-purpose best-effort high-performance computing,
-\item developing and implementing methodology for scalable simulations of evolving digital multicells that allows for arbitrary interactions between multicells in a unified spatial realm,
-\item HSTRAT
-\item de novo production of complex multicellular organisms without employing a segregating topology to force such a transition.
-\item demonstrating metrics that can efficiently quantify complexity and adaptation in an system with implicit selection dynamics, and
-\item characterizing the evolution of complexity, novelty, and adaptation of digital multicells in an open-ended system.
+\item developing and implementing new methodologies for scalable simulations of evolving digital multicells that allows for arbitrary interactions between multicells in a unified spatial realm, and
+\item providing a new technique for genome annotation to facilitate phylogenetic analyses in distributed digital evolution experiments.
 \end{itemize}
 
 The work described here aims to spur reciprocal innovations:
 \begin{itemize}
-\item distributed computing will allow us to evolve complex multicellular digital organisms, and
-\item the unique objectives and latitude of artificial life will foster novel distributed computing techniques.
+\item distributed computing will expand the scope of experiments possible in artificial life systems by allowing us to evolve complex multicellular digital organisms, and
+\item the unique objectives and latitude of artificial life will foster novel algorithms and distributed computing techniques.
 \end{itemize}
 
 \section{Outline}
 
 The remainder of this dissertation is divided up as followed:
 
-Part \ref{part:infrastructure} describes computational infrastructure that was developed to enable scalable digital multicellularity experiments.
+Part \ref{part:infrastructure} describes computational infrastructure developed to enable scalable digital multicellularity experiments.
 \begin{itemize}
 \item Chapter \ref{ch:conduit} presents the Conduit library for best-effort high-performance computing, experimentally demonstrating the scalability benefits of the best-effort approach, and
 \item Chapter \ref{ch:distributed-phylogeny} proposes and tests the ``hereditary stratigraphy'' approach to record phylogenetic information in decentralized artificial life experiments.
 \end{itemize}
+Although not delved into here, additional algorithm and software development work took place on regulation-enabled tag lookup and efficient event-driven virtual CPUs.
 
 Part \ref{part:experiments} reports experiments performed using the DISHTINY digital multicellularity framework.
 \begin{itemize}
