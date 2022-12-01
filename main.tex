@@ -223,33 +223,40 @@ ACKNOWLEDGEMENTS \par
 \newpage
 
 %%%  List of tables:
-\addcontentsline{toc}{chapter}{LIST OF TABLES}
-
-\begin{singlespace}
-\raggedbottom
-\listoftables
-\end{singlespace}
-
-
-\newpage
-
+% disabled!
+% as of 2022 this is no longer required or encouraged by the graduate school
+%
+% \addcontentsline{toc}{chapter}{LIST OF TABLES}
+%
+% \begin{singlespace}
+% \raggedbottom
+% \listoftables
+% \end{singlespace}
+%
+%
+% \newpage
+%
 %%%  List of Figures:
-\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+% disabled!
+% as of 2022 this is no longer required or encouraged by the graduate school
+%
+% \addcontentsline{toc}{chapter}{LIST OF FIGURES}
+%
+% \makeatletter
+% \let\l@figureOLD \l@figure
+% \renewcommand{\l@figure}{\vspace{\baselineskip}\l@figureOLD}
+% \makeatother
+% \addtocontents{lof}{\vspace*{-\baselineskip}}
+% \raggedbottom
+%
+% \listoffigures
+%
+% \setlength{\topmargin}{0in}
+% \newpage
+% \setlength{\parskip}{0 cm} \setlength{\topmargin}{0in}
 
-\makeatletter
-\let\l@figureOLD \l@figure
-\renewcommand{\l@figure}{\vspace{\baselineskip}\l@figureOLD}
-\makeatother
-\addtocontents{lof}{\vspace*{-\baselineskip}}
-\raggedbottom
-
-\listoffigures
-
-\setlength{\topmargin}{0in}
-\newpage
-\setlength{\parskip}{0 cm} \setlength{\topmargin}{0in}
 \end{singlespace}
-
+%
 %%%  This concludes the mandatory formatting for a dissertation.
 %%%  Now, reset the page counter, and use arabic numerals for the remainder:
 \setcounter{page}{1}\pagenumbering{arabic}
