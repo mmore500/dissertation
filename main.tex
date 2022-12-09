@@ -131,34 +131,93 @@
 %\layout
 
 %%%  Title Page:
+% adapted from https://tex.stackexchange.com/a/601029
 \begin{titlepage}
 \begin{center}
-\ \\[1in]%
-\MakeUppercase{\thesisTitle}\\
-\begin{doublespace}
-By\\ %
-\authorName \\[4.5 in]%[2.5 in] %
-A DISSERTATION \\ % Check regulations for Masters
-\end{doublespace}
+  % title 2 inches from top of page
+  \begin{textblock}{
+     \fpeval{(8.5 - 2.0) / 8.5} % width
+    }(
+      \fpeval{1.0 / 8.5}, % xpos
+      \fpeval{2.0 / 11.0} % ypos
+    )
+    \centering
+    \MakeUppercase{\thesisTitle}
+   \end{textblock}
 
-Submitted to \\ Michigan State University \\ in partial
-fulfillment of the requirements \\
-for the degree of\\
-\begin{doublespace}
-\end{doublespace}
+   % By 3.5 inches from top of page
+   \begin{textblock}{
+      \fpeval{(8.5 - 2.0) / 8.5} % width
+     }(
+       \fpeval{1.0 / 8.5}, % xpos
+       \fpeval{3.5 / 11.0} % ypos
+     )
+     \centering
+     By
+    \end{textblock}
 
-%Change the next line as needed for your degree
+    % author name 4 inches from top of page
+    \begin{textblock}{
+       \fpeval{(8.5 - 2.0) / 8.5} % width
+      }(
+        \fpeval{1.0 / 8.5}, % xpos
+        \fpeval{4.0 / 11.0} % ypos
+      )
+      \centering
+      \authorName
+     \end{textblock}
 
-Computer Science - Doctor of Philosophy \\
-Ecology, Evolutionary Biology, and Behavior - Dual Major
-\vspace{\baselineskip}
+    % document name 7 inches from top of page
+    \begin{textblock}{
+      \fpeval{(8.5 - 2.0) / 8.5} % width
+     }(
+       \fpeval{1.0 / 8.5}, % xpos
+       \fpeval{7.0 / 11.0} % ypos
+     )
+     \centering
+      A DISSERTATION % Check regulations for Masters
+    \end{textblock}
 
-%put in the appropriate year
-\graduationYear\\
+    % submitted to 7.5 inches from top of page
+    \begin{textblock}{
+      \fpeval{(8.5 - 2.0) / 8.5} % width
+     }(
+       \fpeval{1.0 / 8.5}, % xpos
+       \fpeval{7.5 / 11.0} % ypos
+     )
+     \centering
+     Submitted to\\
+     Michigan State University\\
+     in partial fulfillment of the requirements\\
+     for the degree of\\
+    \end{textblock}
+
+    % degree(s) 8.5 inches from top of page
+    \begin{textblock}{
+      \fpeval{(8.5 - 2.0) / 8.5} % width
+     }(
+       \fpeval{1.0 / 8.5}, % xpos
+       \fpeval{8.5 / 11.0} % ypos
+     )
+     \centering
+     Computer Science - Doctor of Philosophy\\
+     Ecology, Evolutionary Biology, and Behavior - Dual Major
+    \end{textblock}
+
+    % year 9 inches from top of page
+    \begin{textblock}{
+      \fpeval{(8.5 - 2.0) / 8.5} % width
+     }(
+       \fpeval{1.0 / 8.5}, % xpos
+       \fpeval{9 / 11.0} % ypos
+     )
+     \centering
+     \graduationYear
+    \end{textblock}
 
 \end{center}
+\null\newpage
 \end{titlepage}
-\newpage
 
 %%% Set the page numbering scheme:
 \pagenumbering{roman}
