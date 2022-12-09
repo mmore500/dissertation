@@ -237,23 +237,29 @@
 
 %%%%  Copyright page:
 \thispagestyle{empty}
-\mbox{}\vspace{6in}\\
-\begin{flushright}
-Copyright by \\
-\MakeUppercase{\authorName} \\
-\graduationYear \\
-\end{flushright}
+\topskip0pt
+\vspace*{\fill}
+
+
+{\raggedright
+Copyright by\\
+\MakeUppercase{\authorName}\\
+\graduationYear
+}
+\vspace*{\fill}
+
 \newpage
 
 
 %%%%  Dedication:
-\begin{centering}
-\ \vfill
+\topskip0pt
+\vspace*{\fill}
 
+{\centering
 \input{tex/dedication.tex}
+}
 
-\vfill
-\end{centering}
+\vspace*{\fill}
 \newpage
 
 
