@@ -372,15 +372,16 @@ Copyright by\\
 
 %%%  Appendices, if necessary:
 
-\begin{centering}
-\vfill
-\appendix{APPENDICES}                      %Make sure the names in
-\addcontentsline{toc}{chapter}{APPENDICES} %brackets match
-\vfill
-\end{centering}
-\newpage
+\appendix
+\renewcommand\chaptername{Appendix}
+% adapted from https://tex.stackexchange.com/a/56845
+% see also https://tex.stackexchange.com/a/50037
+\begin{filecontents}{toc-chapter-to-appendix.tex}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}}
+\end{filecontents}
+\include{toc-chapter-to-appendix.tex}
 \input{tex/appendix.tex} %====Put you Appendix text here
-\clearpage
+
 
 
 %\pagenumbering{gobble}% Remove page numbers (and reset to 1)
