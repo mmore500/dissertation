@@ -23,8 +23,20 @@
 \setlength{\cftaftertoctitleskip}{0in}
 \setlength{\cftbeforetoctitleskip}{0in}
 \renewcommand{\cfttoctitlefont}{\hfill\bfseries}
-\renewcommand{\cftaftertoctitle}{\hfill\vspace{-1ex}}
+\renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\contentsname}{\centerline{TABLE OF CONTENTS}}
+
+\renewcommand\cftpartfont{\bfseries}
+\renewcommand\cftchapfont{}
+\renewcommand\cftsecfont{}
+
+\renewcommand\cftpartpagefont{\bfseries}
+\renewcommand\cftchappagefont{}
+\renewcommand\cftsecpagefont{}
+
+\setlength{\cftbeforepartskip}{2pc}
+\setlength{\cftbeforechapskip}{1pc}
+\setlength{\cftbeforesecskip}{0pc}
 
 % MSU now only requires (and prefers) chapters to be listed
 \setcounter{tocdepth}{0}
