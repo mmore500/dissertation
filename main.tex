@@ -13,10 +13,19 @@
 % this shouldn't be necessary, but (strangely) is
 % note that the placeins package prevents float leak between chapters by
 % preventing float leak between sections
-\let\clearpage\newpage
+\let\originalclearpage\clearpage
+\renewcommand{\clearpage}{\newpage}
 \let\cleardoublepage\newpage
 \let\cleardoubleoddpage\newpage
 \let\cleardoubleevenpage\newpage
+
+% prevent figure leakage
+\let\Oldchapter\chapter
+\renewcommand{\chapter}{\FloatBarrier\Oldchapter}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
 
 %%% Colors for tracking changes. %%%
 %%% Use: \cut{<Text you want to cut.>} -> Makes the text red.
@@ -397,8 +406,8 @@ Copyright by\\
 % BIBLIOGRAPHY
 % \vspace*{\fill}
 % \end{center}
-
-\newpage
+\FloatBarrier
+\originalclearpage
 \begin{singlespace}
 \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
 \renewcommand{\bibsection}{\centerline{\textbf{BIBLIOGRAPHY}}}
