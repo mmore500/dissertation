@@ -236,8 +236,6 @@
 \null\newpage
 \end{titlepage}
 
-%%% Set the page numbering scheme:
-\pagenumbering{roman}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % == Abstract ==
 \thispagestyle{empty} \setcounter{page}{4}
@@ -267,6 +265,10 @@ Copyright by\\
 
 \newpage
 
+
+%%% Set the page numbering scheme:
+% as of Dec 2022, roman page numbering must begin on dedication
+\pagenumbering{roman}
 
 %%%%  Dedication:
 \topskip0pt
