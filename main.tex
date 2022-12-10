@@ -1,9 +1,18 @@
 %%% Define the actual document parameters:
-\documentclass[12pt,letterpaper,twoside]{report}
-
+% as of Dec 2022, formatting guide requires margins be "consistent on all sides"
+% i.e., use oneside
+\documentclass[oneside,12pt,letterpaper,openany]{report}
 
 %%%  Include packages used throughout the dissertation:
 \input{tex/packages.tex}
+
+% this shouldn't be necessary, but (strangely) is
+% note that the placeins package prevents float leak between chapters by
+% preventing float leak between sections
+\let\clearpage\newpage
+\let\cleardoublepage\newpage
+\let\cleardoubleoddpage\newpage
+\let\cleardoubleevenpage\newpage
 
 %%% Colors for tracking changes. %%%
 %%% Use: \cut{<Text you want to cut.>} -> Makes the text red.
