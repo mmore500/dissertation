@@ -152,8 +152,10 @@
 
 %%%  Begin the actual dissertation:
 \begin{document}
+\raggedbottom
 \sloppy
 \pagenumbering{gobble}
+\setlength{\parindent}{2 em}
 
 %\layout
 
@@ -350,7 +352,6 @@ Copyright by\\
 
 
 %%%  Last few formatting commands:
-\setlength{\parindent}{2 em}
 \begin{doublespace}
 
 
@@ -362,9 +363,7 @@ Copyright by\\
 %%%  Include the chapters of your dissertation:
 %%% Use format: \include{<file here>(No Extension)}
 
-\begin{raggedbottom}
 \input{tex/body.tex}
-\end{raggedbottom}
 
 %%%  Appendices, if necessary:
 
