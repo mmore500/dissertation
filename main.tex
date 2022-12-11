@@ -405,20 +405,6 @@ Copyright by\\
 
 \input{tex/body.tex}
 
-%%%  Appendices, if necessary:
-
-\appendix
-\renewcommand\chaptername{Appendix}
-% adapted from https://tex.stackexchange.com/a/56845
-% see also https://tex.stackexchange.com/a/50037
-\begin{filecontents}{toc-chapter-to-appendix.tex}
-\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}}
-\end{filecontents}
-\include{toc-chapter-to-appendix.tex}
-\input{tex/appendix.tex} %====Put you Appendix text here
-
-
-
 %\pagenumbering{gobble}% Remove page numbers (and reset to 1)
 %%%  Bibliography:
 
@@ -436,5 +422,20 @@ Copyright by\\
 \bibliographystyle{apalike}% your bst file here
 \bibliography{out.bib} %your bib file here
 \end{singlespace}
+
+%%%  Appendices, if necessary:
+
+\appendix
+\renewcommand\chaptername{Appendix}
+% ensure appendix chapters are labeled appendix instead of chapter in toc
+% adapted from https://tex.stackexchange.com/a/56845
+% see also https://tex.stackexchange.com/a/50037
+\begin{filecontents}{toc-chapter-to-appendix.tex}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}}
+\end{filecontents}
+\include{toc-chapter-to-appendix.tex}
+
+\input{tex/appendix.tex} %====Put you Appendix text here
+
 \end{doublespace}
 \end{document}
