@@ -200,7 +200,8 @@
 \begin{document}
 \raggedbottom
 \sloppy
-\pagenumbering{gobble}
+\pagenumbering{roman}
+\pagestyle{empty}
 \setlength{\parindent}{2 em}
 
 %\layout
@@ -296,7 +297,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % == Abstract ==
-\thispagestyle{empty} \setcounter{page}{4}
 \begin{doublespace}
 
 \centerline{\textbf{ABSTRACT}}
@@ -306,10 +306,8 @@
 \end{doublespace}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\addtocounter{page}{-2}%
 
 %%%%  Copyright page:
-\thispagestyle{empty}
 \topskip0pt
 \vspace*{\fill}
 
@@ -326,7 +324,7 @@ Copyright by\\
 
 %%% Set the page numbering scheme:
 % as of Dec 2022, roman page numbering must begin on dedication
-\pagenumbering{roman}
+\pagestyle{plain}
 
 %%%%  Dedication:
 \topskip0pt
