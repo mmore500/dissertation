@@ -79,6 +79,12 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\contentsname}{\centerline{TABLE OF CONTENTS}}
 
+% adapted from http://tug.ctan.org/tex-archive/macros/latex/contrib/tocloft/tocloft.dtx
+% adapted from https://tex.stackexchange.com/a/498313
+\makeatletter
+  \renewcommand{\@tocrmarg}{2.55em plus 1fil}
+\makeatother
+
 \renewcommand\cftpartfont{\bfseries}
 \renewcommand\cftchapfont{}
 \renewcommand\cftsecfont{}
@@ -347,7 +353,10 @@ Copyright by\\
 
 
 \begin{singlespace}
+\begin{hyphenrules}{nohyphenation}
+
 \tableofcontents %
+\end{hyphenrules}
 
 \newpage
 
