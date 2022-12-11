@@ -10,10 +10,13 @@
 %%%  Include packages used throughout the dissertation:
 \input{tex/packages.tex}
 
+% suppress generation of unwanted empty pages
 % this shouldn't be necessary, but (strangely) is
 % note that the placeins package prevents float leak between chapters by
 % preventing float leak between sections
+% save original clearpage
 \let\originalclearpage\clearpage
+
 \renewcommand{\clearpage}{\newpage}
 \let\cleardoublepage\newpage
 \let\cleardoubleoddpage\newpage
@@ -26,6 +29,25 @@
 \let\Oldsection\section
 \renewcommand{\section}{\FloatBarrier\Oldsection}
 
+% this would be more targeted approach to suppressing unwanted empty pages,
+% but doesn't work
+% \patchcmd{\chapter}{\clearpage}{}{\typeout{chapter macro patched}}{}
+% \patchcmd{\chapter}{\cleardoublepage}{}{\typeout{chapter macro patched}}{}
+% \patchcmd{\chapter}{\cleardoubleoddpage}{}{\typeout{chapter macro patched}}{}
+% \patchcmd{\chapter}{\cleardoubleevenpage}{}{\typeout{chapter macro patched}}{}
+% \patchcmd{\part}{\clearpage}{}{\typeout{part macro patched}}{}
+% \patchcmd{\part}{\cleardoublepage}{}{\typeout{part macro patched}}{}
+% \patchcmd{\part}{\cleardoubleoddpage}{}{\typeout{part macro patched}}{}
+% \patchcmd{\part}{\cleardoubleevenpage}{}{\typeout{part macro patched}}{}
+% \patchcmd{\section}{\clearpage}{}{\typeout{section macro patched}}{}
+% \patchcmd{\section}{\cleardoublepage}{}{\typeout{section macro patched}}{}
+% \patchcmd{\section}{\cleardoubleoddpage}{}{\typeout{section macro patched}}{}
+% \patchcmd{\section}{\cleardoubleevenpage}{}{\typeout{section macro patched}}{}
+% % see https://stackoverflow.com/a/2290338
+% \patchcmd{\include}{\clearpage}{}{\typeout{include macro patched}}{}
+% \patchcmd{\include}{\cleardoublepage}{}{\typeout{include macro patched}}{}
+% \patchcmd{\include}{\cleardoubleoddpage}{}{\typeout{include macro patched}}{}
+% \patchcmd{\include}{\cleardoubleevenpage}{}{\typeout{include macro patched}}{}
 
 %%% Colors for tracking changes. %%%
 %%% Use: \cut{<Text you want to cut.>} -> Makes the text red.
