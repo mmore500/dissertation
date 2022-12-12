@@ -204,6 +204,40 @@
 \mydraft
 \fi
 
+
+% ensure all code listings have continuation labels
+% adapted from https://tex.stackexchange.com/a/117839
+\surroundwithmdframed[
+  hidealllines=true,
+  middleextra={
+    \node[anchor=west] at (O|-P)
+    {\lstlistingname{} \thelstlisting{}  (cont'd)};
+  },
+  secondextra={
+    \node[anchor=west] at (O|-P)
+    {\lstlistingname{} \thelstlisting{}  (cont'd)};
+  },
+  splittopskip=\baselineskip
+]{lstlisting}
+
+% % need to wrap lstimportlisting in dummy lstinputlistinghandle env
+% in order for mdframed to attach
+% BUT this approach appears to be to intensive on compiler memory use
+% so, instead, wrap everything in mdframed directly
+\newenvironment{lstinputlistinghandle}{}{\originalclearpage}
+\surroundwithmdframed[
+  hidealllines=true,
+  middleextra={
+    \node[anchor=center] at ($(P)!0.5!(O|-P)$)
+    {\lstlistingname{} \thelstlisting{}  (cont'd)};
+  },
+  secondextra={
+    \node[anchor=center] at ($(P)!0.5!(O|-P)$)
+    {\lstlistingname{} \thelstlisting{}  (cont'd)};
+  },
+  splittopskip=\baselineskip
+]{lstinputlistinghandle}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%  Begin the actual dissertation:

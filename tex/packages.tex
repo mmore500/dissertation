@@ -34,6 +34,8 @@
 \usepackage{lscape}
 \usepackage{makecell}
 \usepackage[footnotes,definitionLists,hashEnumerators,smartEllipses,hybrid]{markdown}
+\usepackage{makecmds}
+\usepackage[framemethod=tikz]{mdframed}
 \usepackage{morewrites}
 \usepackage[resetlabels]{multibib}
 % for compatibility with subrepos
@@ -73,6 +75,8 @@
 % tikz must load after xcolor, https://tex.stackexchange.com/a/51490
 \usepackage{tikz}
 % \usepackage [latin1]{inputenc}
+
+\usetikzlibrary{calc}
 
 % pragma once, adapted from https://tex.stackexchange.com/a/195173
 \makeatletter

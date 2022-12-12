@@ -3,5 +3,10 @@
 \usepackage{lineno}
 \linenumbers
 \renewcommand{\linenumberfont}{\normalfont\small\color{red}}
+
+% prevent line numbers from causing mdframe to break at every single line
+\BeforeBeginEnvironment{mdframed}{\begin{internallinenumbers}}
+\AfterEndEnvironment{mdframed}{\end{internallinenumbers}}
+
 }
 \input{main.tex}
