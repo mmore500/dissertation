@@ -60,10 +60,20 @@
 \sectionfont{\fontsize{14}{15}\selectfont}
 \subsectionfont{\fontsize{12}{15}\selectfont}
 
+% graduate school requires chapter headings be formatted like sections
+% with no larger than 14pt font for chapter headings
+% adapted from https://tex.stackexchange.com/a/10332
+\titleformat{\chapter}
+  {\normalfont\fontsize{14}{15}\selectfont\bfseries\centering}{\chaptername{} \thechapter}{1em}{}
+
+% part headings also can't be bigger than 14pt
+\partfont{\fontsize{14}{15}\selectfont}
+
 % adapted from https://tex.stackexchange.com/a/53340
 \titlespacing{\section}{0pt}{6pt}{0pt}
 \titlespacing{\subsection}{0pt}{6pt}{0pt}
 \titlespacing{\subsubsection}{0pt}{6pt}{0pt}
+\titlespacing*{\chapter}{0pt}{6pt}{0pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
