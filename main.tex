@@ -164,6 +164,12 @@
   \renewcommand{\footrulewidth}{0pt}% No footer rule
 }
 
+% apply page style within all sideways tables
+\BeforeBeginEnvironment{landscape}{
+  % \thispagestyle{mylandscape}
+  \thispagestyle{mylandscape}
+}
+
 %%% Renew command for full page figures:
 \renewcommand{\topfraction}{1.0}
 
