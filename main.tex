@@ -100,7 +100,12 @@
   \renewcommand{\@tocrmarg}{2.55em plus 1fil}
 \makeatother
 
-\renewcommand\cftpartfont{\bfseries}
+% ensure that parts are labeled as such in toc
+% ... have to hack Part into font because
+% \renewcommand{\cftpartpresnum}{Part }
+% has no effect
+% see https://tex.stackexchange.com/questions/419428/
+\renewcommand\cftpartfont{\bfseries Part~}
 \renewcommand\cftchapfont{}
 \renewcommand\cftsecfont{}
 
@@ -115,6 +120,7 @@
 % MSU now only requires (and prefers) chapters to be listed
 \setcounter{tocdepth}{0}
 % Add dot leaders to the chapter entries in the TOC
+\renewcommand{\cftpartleader}{\bfseries\cftdotfill{\cftdotsep}}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 \setlength{\cftbeforeloftitleskip}{-0.17in}
