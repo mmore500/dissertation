@@ -164,11 +164,68 @@
   \renewcommand{\footrulewidth}{0pt}% No footer rule
 }
 
-% apply page style within all sideways tables
-\BeforeBeginEnvironment{landscape}{
-  % \thispagestyle{mylandscape}
-  \thispagestyle{mylandscape}
+% adapted from https://tex.stackexchange.com/a/472608
+\usepackage{eso-pic,zref-user}
+\newcounter{cntsideways}
+\makeatletter
+\AddToShipoutPictureBG{%
+  \PLS@RemoveRotate
 }
+\AddToShipoutPictureBG{%
+ \ifnum\zref@extractdefault{rotate\number\value{page}}{page}{0}=0
+  \PLS@RemoveRotate
+ \else
+  \PLS@AddRotate{90}%
+ \fi}
+
+\newcommand\rotatesidewayslabel{\stepcounter{cntsideways}%
+ \zlabel{tmp\thecntsideways}\zlabel{rotate\zref@extractdefault{tmp\thecntsideways}{page}{0}}}
+
+\let\originalsidewaysfigure\sidewaysfigure
+\let\endoriginalsidewaysfigure\endsidewaysfigure
+\renewenvironment{sidewaysfigure}{%
+  \begin{originalsidewaysfigure}%
+  \thisfloatpagestyle{mylandscape}%
+  \rotatesidewayslabel%
+}{%
+  \end{originalsidewaysfigure}%
+}
+\renewenvironment{sidewaysfigure*}{%
+  \begin{originalsidewaysfigure}%
+  \thisfloatpagestyle{mylandscape}%
+  \rotatesidewayslabel%
+}{%
+  \end{originalsidewaysfigure}%
+}
+
+\let\originalsidewaystable\sidewaystable
+\let\endoriginalsidewaystable\endsidewaystable
+\renewenvironment{sidewaystable}{%
+  \begin{originalsidewaystable}%
+  \thisfloatpagestyle{mylandscape}%
+  \rotatesidewayslabel%
+}{%
+  \end{originalsidewaystable}%
+}
+\renewenvironment{sidewaystable*}{%
+  \begin{originalsidewaystable}%
+  \thisfloatpagestyle{mylandscape}%
+  \rotatesidewayslabel%
+}{%
+  \end{originalsidewaystable}%
+}
+
+\let\originallandscape\landscape
+\let\endoriginallandscape\endlandscape
+\renewenvironment{landscape}{%
+  \begin{originallandscape}%
+  \thispagestyle{mylandscape}%
+  \rotatesidewayslabel%
+}{%
+  \end{originallandscape}%
+}
+
+\makeatother
 
 %%% Renew command for full page figures:
 \renewcommand{\topfraction}{1.0}
