@@ -20,19 +20,6 @@
 % note that the placeins package prevents float leak between chapters by
 % preventing float leak between sections
 % save original clearpage
-\let\originalclearpage\clearpage
-
-\renewcommand{\clearpage}{\newpage}
-\let\cleardoublepage\newpage
-\let\cleardoubleoddpage\newpage
-\let\cleardoubleevenpage\newpage
-
-% prevent figure leakage
-\let\Oldchapter\chapter
-\renewcommand{\chapter}{\FloatBarrier\Oldchapter}
-
-\let\Oldsection\section
-\renewcommand{\section}{\FloatBarrier\Oldsection}
 
 % this would be more targeted approach to suppressing unwanted empty pages,
 % but doesn't work
@@ -295,7 +282,7 @@
 % in order for mdframed to attach
 % BUT this approach appears to be to intensive on compiler memory use
 % so, instead, wrap everything in mdframed directly
-\newenvironment{lstinputlistinghandle}{}{\originalclearpage}
+\newenvironment{lstinputlistinghandle}{}{}
 \surroundwithmdframed[
   hidealllines=true,
   middleextra={
@@ -421,7 +408,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%  Copyright page:
-\topskip0pt
 \vspace*{\fill}
 
 
@@ -440,7 +426,6 @@ Copyright by\\
 \pagestyle{plain}
 
 %%%%  Dedication:
-\topskip0pt
 \vspace*{\fill}
 
 \begin{hyphenrules}{nohyphenation}
@@ -537,8 +522,8 @@ Copyright by\\
 % \vspace*{\fill}
 % \end{center}
 
-\FloatBarrier
-\afterpage{\originalclearpage}
+\clearpage
+
 \begin{singlespace}
 \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
 \renewcommand{\bibsection}{\centerline{\textbf{BIBLIOGRAPHY}}}
